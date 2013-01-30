@@ -20,8 +20,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
+			OutputDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -83,7 +83,7 @@
 				OutputFile="$(OutDir)/BaseEngineD.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\Lib;..\External"
+				AdditionalLibraryDirectories="..\..\Lib;..\External"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -115,7 +115,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\Forever&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.pdb ..\..\..\Exe\Forever&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\loginserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\dataserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\dbserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\superserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\CommunityServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\DNSServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\SaleServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\TopServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\Exe\servers\GMServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\InterMediate\Debug\GMTools&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.lib ..\..\InterMediate\Debug\GMTools&#x0D;&#x0A;&#x0D;&#x0A;"
+				CommandLine="copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.lib ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\..\Exe\Forever&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -220,8 +220,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
+			OutputDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Engine"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -286,7 +286,7 @@
 				OutputFile="$(OutDir)/BaseEngineR.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\Lib;..\External"
+				AdditionalLibraryDirectories="..\..\Lib;..\External"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
 				GenerateMapFile="true"
@@ -317,7 +317,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.pdb ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\topServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\saleServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\Servers\GMServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\Exe\gmtools\&#x0D;&#x0A;"
+				CommandLine="copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.lib ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\..\Exe\Server\gameserver\&#x0D;&#x0A;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration

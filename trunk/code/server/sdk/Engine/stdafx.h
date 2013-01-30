@@ -1,5 +1,5 @@
 #pragma once
-#include "../../GameSDK/Port/config.h"
+#include "../Port/config.h"
 #ifdef _MINICLIENT		//动态下载 需要以下库
 #include <map>
 #include <string>

@@ -268,19 +268,14 @@ bool CGameNet::DecompressPacketCommand(int nThreadID,PACKET_COMMAND *pkt)
 	{
 		Log("pkt is null, file %s\n", __FILE__);
 		return false;
-	}
-	if (pkt->Type() != PACKET_COMPRESSED_COMMAND)
-	{
-		//Log("pkt\'s type is not PACKET_COMPRESSED_COMMAND, file %s\n", __FILE__);
-		return false;
-	}
+	}	
 	if (pkt->DataSize() > (int)PACKET_BUFFER_SIZE)
 	{
 		Log("pkt is too long,in file %s\n", __FILE__);
 		return false;
 	}
 #else
-	if ((!pkt) || (pkt->Type() != PACKET_COMPRESSED_COMMAND) || (pkt->DataSize() > PACKET_BUFFER_SIZE))
+	if ((!pkt) || (pkt->DataSize() > PACKET_BUFFER_SIZE))
 		return false;
 #endif
 
@@ -553,7 +548,7 @@ int CGameNet::Recv( SOCKET sock,char *buf,DWORD nSize )
 			else if(pBufPacket->GetPacketLeftSize() == 0)
 			{
 				// 因为存在非压缩的数据 所以需要判断一下 By David 2010-2-18
-				if(pBufPacket->pPacket->Type() == PACKET_COMPRESSED_COMMAND)
+				if(true)
 				{
 					//客户端不可能发来压缩的消息包
 					//fixed by david  2012年11月5日
@@ -688,10 +683,6 @@ BOOL CStringNet::Begin(int nListenPort,int nPacketPoolSize,int nConnectMax,int n
 	token.setToken("@|");
 
 	SetDefLessFunc(PACKET_RECV_NAME_FAST_TABLE);
-	for( uint16_t i=0; i<sizeof( PACKET_SEND_NAME )/sizeof( CmdInfo ); i++ )
-	{
-		PACKET_RECV_NAME_FAST_TABLE.Insert( PACKET_SEND_NAME[i].szMsgFormat, PACKET_SEND_NAME[i].nCmd + 1 );
-	}
 
 	SetDefLessFunc(m_recvbuff);
 
@@ -764,20 +755,25 @@ int CStringNet::_FormatPacket( char* pkgTmp, PACKET_COMMAND* pPacket )
 
 	int pkgidx = 0;
 
+	/*
 	//拼包头
 	for( uint16_t i=0; i<sizeof( PACKET_SEND_NAME )/sizeof( CmdInfo ); i++ )
 	{
+		
 		if( PACKET_SEND_NAME[i].nCmd == pPacket->Type() )
 		{
 			sprintf( pkgTmp, "%u@"UINT64_FMT"|%s", pPacket->nNetid, pPacket->GetPID(), PACKET_SEND_NAME[i].szMsgFormat );
 			pkgidx = strlen(pkgTmp);
 			break;
 		}
+		
 	}
+	*/
 
 	//发送心跳包
 	if(!pkgidx)
 	{
+		/*
 		assert( pPacket->Type() == CHECKSERVER_REQUEST_HEARTBEAT );
 		if( pPacket->Type() == CHECKSERVER_REQUEST_HEARTBEAT )
 		{
@@ -785,6 +781,7 @@ int CStringNet::_FormatPacket( char* pkgTmp, PACKET_COMMAND* pPacket )
 			pkgidx = strlen(pkgTmp);
 			goto end;
 		}
+		*/
 	}
 
 	int nType = pPacket->Type();

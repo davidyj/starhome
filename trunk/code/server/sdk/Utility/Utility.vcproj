@@ -21,8 +21,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
+			OutputDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -87,7 +87,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Utility\UtilityD.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Utility\UtilityD.lib ..\..\InterMediate\Debug\GMTools&#x0D;&#x0A;&#x0D;&#x0A;"
+				CommandLine="copy ..\..\..\..\InterMediate\Debug\GameSDK\Utility\UtilityD.lib ..\..\Lib\&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -164,8 +164,8 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
+			OutputDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Utility"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -232,7 +232,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Utility\UtilityR.lib ..\Lib\&#x0D;&#x0A;"
+				CommandLine="copy ..\..\..\..\InterMediate\Release\GameSDK\Utility\UtilityR.lib ..\..\Lib\&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -830,10 +830,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Source\memtbb.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Source\memvalidate.cpp"
 				>
 			</File>
@@ -1069,10 +1065,6 @@
 			</File>
 			<File
 				RelativePath=".\Include\memstd.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Include\memtbb.h"
 				>
 			</File>
 			<File

@@ -7,11 +7,9 @@
 #endif
 #include "dbg.h"
 #include "memalloc.h"
-
 #include "osAllocator.h"
 #include "memdbg.h"
 #include "memstd.h"
-#include "memtbb.h"
 #include "memvalidate.h"
 
 
@@ -34,7 +32,7 @@ IMemAlloc &MemAlloc( )
 	static CDbgMemAlloc s_DbgMemAlloc;
 	return s_DbgMemAlloc;
 #else
-	static CTbbMemAlloc s_TbbMemAlloc;
+	static CStdMemAlloc s_TbbMemAlloc;
 	return s_TbbMemAlloc;
 #endif
 
