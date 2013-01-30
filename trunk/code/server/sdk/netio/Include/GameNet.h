@@ -36,8 +36,6 @@ struct BUFFER_TO_PACKET
 		pPacket		= NULL;
 	}
 
-//	inline int GetWritePtr() { return m_WritePtr; }
-
 	inline bool IsHeadFull()
 	{
 		return m_WritePtr >= PACKET_COMMAND::HeadSize();
@@ -65,14 +63,6 @@ struct BUFFER_TO_PACKET
 		return pPacket->Size() - m_WritePtr;
 	}
 
-//	inline BOOL GetPacketSize()
-//	{
-//		if(!IsHeadFull())
-//			return 0;
-//
-//		return pPacket->Size();
-//	}
-
 	inline int Write(const char* buffer, int nSize)
 	{
 		if(m_WritePtr + nSize > (int)PACKET_BUFFER_SIZE || nSize <= 0)
@@ -84,34 +74,10 @@ struct BUFFER_TO_PACKET
 		//int Optr = m_WritePtr;
 		memcpy(pPacket->pParam + m_WritePtr, buffer, nSize);
 		m_WritePtr += nSize;
-
-		//if(Optr < PACKET_COMMAND::HeadSize() && m_WritePtr >= PACKET_COMMAND::HeadSize())
-		//{
-		//	if(!CheckPacket())
-		//	{
-		//		Log("CheckPacket Error\n");
-		//		return 0;
-		//	}
-		//}
+		
 		return nSize;
 	}
-
-	//inline bool CheckPacket()
-	//{
-	//	if(GetPacketSize() < PACKET_COMMAND::HeadSize() || GetPacketSize() > PACKET_BUFFER_SIZE)
-	//	{
-	//		Assert(0);
-	//		return false;
-	//	}
-	//	if( GetPacketDefSize(pPacket->Type()) < 0 )
-	//		return true;
-	//	if( GetPacketDefSize(pPacket->Type()) == GetPacketSize() )
-	//		return true;
-
-		//包校验失败，做相应处理
-
-	//	return false;
-	//}
+	
 	int				m_Ref;
 	SOCKET			m_sock;
 	int				m_WritePtr;		// Packet中 pParam 的写指针
@@ -123,7 +89,7 @@ struct BUFFER_TO_PACKET
 
 };
 
-//typedef CUtlLinkedList<PACKET_COMMAND *,int>	PACKETLIST;
+
 typedef CUtlMap<SOCKET,BUFFER_TO_PACKET*>		BUFFERTOPACKETMAP;
 
 
@@ -258,43 +224,6 @@ void PrintSocketCount();
 
 void Display_Chunk(bool enable);
 #endif
-
-
-class GAMENETCOMMON_CLASS CStringNet : public CGameNet
-{
-public:
-	virtual BOOL	Begin(int nListenPort,int nPacketPoolSize,int nConnectMax,int nQueueSize,int nRecvSize,int nSendSize,int nTimeout,int nAcceptCount=0);
-	virtual void	End();
-	virtual void	Accept( SOCKET sock);
-	virtual void	Break( SOCKET sock );
-	virtual int		Send( SOCKET sock, PACKET_COMMAND* pPacket );
-	virtual int		Recv( SOCKET sock, char* buf, DWORD nSize );
-	virtual bool	addPacket( PACKET_COMMAND* pPacket ){return true;}
-
-	virtual SOCKET	Connect( const char *szIp,ULONG nPort );
-
-protected:
-	virtual int				_FormatPacket( char* pkgTmp, PACKET_COMMAND* pPacket );
-	virtual PACKET_COMMAND*	_ParserPacket( SOCKET sock, char* buf, DWORD nSize );
-
-protected:
-	CToken token;
-	CUtlMap<SOCKET,std::string> m_recvbuff;
-	CUtlMap<std::string, int> PACKET_RECV_NAME_FAST_TABLE;
-};
-
-
-//GMServer 
-class GAMENETCOMMON_CLASS CGMStringNet : public CStringNet
-{
-public:
-	CGMStringNet();
-	~CGMStringNet();
-public:	
-	virtual int		Send( SOCKET sock, PACKET_COMMAND* pPacket );
-	virtual int		Recv( SOCKET sock,char*	buf, DWORD nSize );
-};
-
 
 #ifdef WIN32
 void GetLocalMAC(char *buf);
