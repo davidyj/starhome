@@ -1,0 +1,113 @@
+#ifndef TIMER_POSIX_IMPL_H
+#define TIMER_POSIX_IMPL_H
+
+#define GAME_FRAME_PIERIOD		200	//	2010-12-13	li9chuan
+
+/*
+ * mode: 
+ * 0: oneshot timer; 
+ * 1: periodicity timer
+ */
+int CServerMgr::SetTimer(int milliseconds, int nMode)
+{
+
+	struct sigevent ev;
+	ev.sigev_notify = SIGEV_SIGNAL;
+	ev.sigev_signo = SIGMYTIMER; //定时器到期，操作系统会发送SIGMYTIMER信号
+	ev.sigev_value.sival_ptr = (void *)this; //把我们自己定义的结构的指针付给它，它会timer的处理函数中取出来
+
+	/*
+	 *CLOCK_REALTIME与CLOCK_MONOTONIC的区别：
+	 * 反映了实际的时间，会随机器的时钟调整而变化，而 CLOCK_MONOTONIC 和实际时间无关，不随机器的时钟调整而变化。
+	 * 不建议使用CLOCK_REALTIME 
+	*/
+	int result = timer_create(CLOCK_MONOTONIC, &ev, &m_WaitableTimer);
+
+	if (result == 0) {
+		struct itimerspec value;
+		struct itimerspec ovalue;
+
+		value.it_value.tv_sec = milliseconds / 1000;
+		value.it_value.tv_nsec = (milliseconds % 1000) * (1000 * 1000);
+
+		if (nMode == 1){
+			value.it_interval.tv_sec = value.it_value.tv_sec;
+			value.it_interval.tv_nsec = value.it_value.tv_nsec;
+		} else	{
+			value.it_interval.tv_sec = 0;
+			value.it_interval.tv_nsec = 0;
+		}
+
+		if (timer_settime(m_WaitableTimer, 0, &value, &ovalue) == 0){
+			printf("SetTimer succ in file %s\n", __FILE__);
+		}
+	} else {
+		printf("create timer error,errno = %d\n", errno);
+	}	
+	return 0;
+}
+
+bool CServerMgr::SetSignalHandler()
+{
+	struct sigaction sysact;
+	//setup signal handler
+	sigemptyset(&sysact.sa_mask);
+
+	/*
+	 * SA_RESTART:此信号中断的系统调用自动重启
+	 * SA_NODEFER:如果设定了此这个标志：
+	 *    如果你设定了200毫秒触发了一次的定时器，处理函数的某次调用中已经耗费了200毫秒，还没有运行完，
+	 *    这时如果设定SA_NODEFER标志，操作系统会向当前进程发送我们设定的信号，再次调用这个信号处理函数。
+	 *    也就是说，设定了此标志，信号处理函数有可能被嵌套调用
+	 *
+	 */
+	sysact.sa_flags = SA_SIGINFO | SA_RESTART;
+	//sysact.sa_flags = SA_SIGINFO | SA_RESTART | SA_NODEFER;
+
+	sysact.sa_sigaction = &OnTimer; //制定信号的处理函数是OnTimer
+	if (sigaction(SIGMYTIMER, &sysact, NULL)){
+		printf("sigaction error. errno = %d\n", errno);
+		return false;
+	}
+	return true;
+}
+
+BOOL CServerMgr::Begin()
+{
+	if (!SetSignalHandler()){
+		printf("failed to SetSignalHandler\n"); 
+		return FALSE;
+	}
+
+	SetTimer(GAME_FRAME_PIERIOD, 1);
+	printf("main thread id : %u\n", pthread_self());
+	return TRUE;
+}
+
+BOOL CServerMgr::Run()
+{
+	printf("posix timer, CServerMgr::Run()...\n");
+	while (m_dRunFlag){
+		usleep(GAME_FRAME_PIERIOD * 1000 *1000);
+	}
+	End();
+	timer_delete(m_WaitableTimer);	
+	printf("ServerStar() Quit....OK\n");
+	return TRUE;
+}	
+
+BOOL CServerMgr::LogicRun()
+{	
+	return TRUE;
+}
+
+void CServerMgr::OnTimer(int signo, siginfo_t* info, void* context)
+{
+	if (signo != SIGMYTIMER)
+		return;
+	g_GameTimer++; 
+	CServerMgr *pThis = (CServerMgr *)(info->si_value.sival_ptr);
+	pThis->LogicRun();
+}
+#endif
+

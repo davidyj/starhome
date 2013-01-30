@@ -1,0 +1,44 @@
+#ifndef TIMER_KQUEUE_IMPL_H
+#define TIMER_KQUEUE_IMPL_H
+
+BOOL CServerMgr::Begin()
+{
+	m_kqueuefd = kqueue();
+	if (m_kqueuefd < 0){
+		printf("failed to create timer kqueue fd.\n");
+		return FALSE;
+	}
+	return TRUE;
+}	
+
+BOOL CServerMgr::Run()
+{
+	struct kevent ev, newev;
+	EV_SET(&ev, -1, EVFILT_TIMER, EV_ADD | EV_ENABLE, 0, GAME_FRAME_PIERIOD, NULL);
+	kevent(m_kqueuefd, &ev, 1, NULL, 0, NULL);
+
+	printf("period = %d. CServerMgr::Run()...\n", GAME_FRAME_PIERIOD);
+
+	int count = 0;
+	while (m_dRunFlag) {
+		count = kevent(m_kqueuefd, NULL, 0, &newev, 1, NULL);
+		if (!count){
+			continue;
+		}
+		g_GameTimer++; 
+		LogicRun();
+	}	
+	End();
+	close(m_kqueuefd);
+	m_kqueuefd = -1;
+	printf("ServerStar() Quit....OK\n");
+
+	return TRUE;
+}	
+
+BOOL CServerMgr::LogicRun()
+{
+	return true;
+}
+#endif	
+

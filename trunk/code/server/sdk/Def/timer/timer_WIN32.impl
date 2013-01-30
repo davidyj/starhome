@@ -1,0 +1,84 @@
+#ifndef TIMER_WIN32_IMPL_H
+#define TIMER_WIN32_IMPL_H
+BOOL CServerMgr::Begin()
+{
+	
+	//
+	char name[20]={0};
+	timeBeginPeriod(1);
+	for(int i=0;i<100;i++)
+	{		
+		sprintf(name,"GameTimer%d",i);
+		m_WaitableTimer = OpenWaitableTimer(TIMER_ALL_ACCESS, FALSE, name);
+		if(!m_WaitableTimer)
+		{
+			m_WaitableTimer = CreateWaitableTimer(NULL,FALSE,name);		
+			break;
+		}
+	}
+	if(!m_WaitableTimer)
+	{
+		printf("无法创建定时器......");
+		return FALSE;
+	}
+	
+	//设定循环时间
+	LARGE_INTEGER liDueTime;
+	liDueTime.QuadPart = -10000000;
+	SetWaitableTimer(m_WaitableTimer, &liDueTime, SERVER_TIMER_PERIOD, NULL, NULL, 0);
+	
+	DWORD wThreadID;
+	HANDLE hThread = CreateThread(NULL, 0,FPSLogic,(void*)this,0,&wThreadID);	
+	CloseHandle(hThread);
+	
+	
+	
+	return TRUE;
+}
+
+BOOL CServerMgr::Run()
+{
+#ifndef _DEBUG
+	__try{
+#endif	
+		// 逻辑计时开始
+		while( m_dRunFlag )
+		{
+			WaitForSingleObject(m_WaitableTimer, INFINITE);		
+			g_GameTimer++;
+			LogicRun(); //运行逻辑
+		}
+		End();
+		CloseHandle(m_WaitableTimer); 
+		printf("ServerStar() Quit....OK\n");
+#ifndef _DEBUG		
+	}
+	__except (HandleException(GetExceptionInformation(), "server main"))
+	{
+		// We don't actually do anything inside the handler. All of the
+		// work is done by HandleException()
+	}
+#endif	
+	return TRUE;		
+}
+
+DWORD WINAPI CServerMgr::FPSLogic(LPVOID pParam)
+{
+	if(!pParam)
+		return 0;
+
+	CServerMgr* pThis = (CServerMgr*)pParam;
+
+	while( pThis->m_dRunFlag )
+	{
+		WaitForSingleObject(pThis->m_WaitableTimer, INFINITE);		
+		InterlockedIncrement((LONG*)&g_GameTimer);
+	}
+	return 0;
+}
+
+BOOL CServerMgr::LogicRun()
+{
+	return TRUE;
+}
+#endif
