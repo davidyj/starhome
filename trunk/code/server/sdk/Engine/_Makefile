@@ -1,0 +1,103 @@
+Inc_Path = -I ./Include -I ./  -I ../Utility/Include
+Define_Macros = -D _DEBUG 
+CXXFLAGS = $(Define_Macros) -ggdb 
+#CXXFLAGS = 
+Libs = -lpthread -lz -L ../../lib -lUtility -lzip
+Lib_Name = libEngine.so
+Out_Path = ../lib
+Main_Objs = BaseFileSystem.o BaseObj.o BitArray.o cmdlib.o commandline.o  CSVFileParser.o Engine.o File.o FileStdio.o posix_support.o filesystem_stdio.o Geo.o KeyValues.o KeyValuesSystem.o McbXML.o Point.o random.o Rect.o ResourceMgr.o  utlbuffer.o utlsymbol.o XMLParser.o
+ 
+Abi_Ojbs = 
+Tools_Objs =  DirtyRect.o Encrypt.o ExcelTable.o IDTable.o PathFunc.o TextTable.o UserIDTable.o VectorTable.o 
+Async_Objs = SLock.o 
+#AsyncFileDownload.o
+#AsyncFileRead.o
+#FtpDown.o
+#FtpSocket.o
+#SFile2.o
+
+Zip_Objs = ZipSystem.o
+
+All_Objects = $(Main_Objs) $(Abi_Ojbs) $(Tools_Objs) $(Async_Objs) $(Zip_Objs)
+
+$(Lib_Name): $(All_Objects)
+	$(CXX) -fPIC -shared  -o $(Out_Path)/$(Lib_Name)  $(All_Objects)	
+	@echo "Each project that uses this lib must call Engine_DllMain() function mannually"
+#	mv *.o obj/
+
+#Main Objs
+BaseFileSystem.o: Source/BaseFileSystem.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+BaseObj.o: Source/BaseObj.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+BitArray.o: Source/BitArray.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+cmdlib.o: Source/cmdlib.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+commandline.o: Source/commandline.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+CSVFileParser.o: Source/CSVFileParser.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+Engine.o: Source/Engine_POSIX.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c Source/Engine_POSIX.cpp -o $@
+File.o: Source/File.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+FileStdio.o: Source/FileStdio.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+posix_support.o: Source/posix_support.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+filesystem_stdio.o: Source/filesystem_stdio.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+Geo.o: Source/Geo.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+KeyValues.o: Source/KeyValues.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+KeyValuesSystem.o: Source/KeyValuesSystem.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+McbXML.o: Source/McbXML.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+Point.o: Source/Point.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+random.o: Source/random.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+Rect.o: Source/Rect.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+ResourceMgr.o: Source/ResourceMgr.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+utlbuffer.o: Source/utlbuffer.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+utlsymbol.o: Source/utlsymbol.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+XMLParser.o: Source/XMLParser.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+
+#Tools_Objs
+DirtyRect.o: Source/DirtyRect.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+Encrypt.o: Source/Encrypt.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+ExcelTable.o: Source/ExcelTable.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+IDTable.o:Source/IDTable.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+PathFunc.o: Source/PathFunc.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+TextTable.o: Source/TextTable.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+UserIDTable.o: Source/UserIDTable.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+VectorTable.o: Source/VectorTable.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+#Async_Objs 
+SLock.o: Source/SLock.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+ZipSystem.o: Source/ZipSystem.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm *.o
+#	rm obj/*.o
+#	rm $(Out_Path)/$(Lib_Name)

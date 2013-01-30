@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Utility" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="libUtility" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-gstabs" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__DEV__" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="cp libUtility.a ../lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="libUtility" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp libUtility.a ../lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="ReleaseAddSymbol">
+				<Option output="libUtility" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wno-unknown-pragmas" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="cp libUtility.a ../lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-march=opteron" />
+			<Add option="-Wall" />
+			<Add option="-g" />
+			<Add option="-m64 -m3dnow -msse -fPIC" />
+			<Add option="-c -fmessage-length=0" />
+			<Add option="-DFREEBSD" />
+			<Add option="-DX86AMD64" />
+			<Add directory="Include" />
+			<Add directory="." />
+		</Compiler>
+		<Unit filename="Include/Chain.h" />
+		<Unit filename="Include/CommDef.h" />
+		<Unit filename="Include/POSIX/CommDef_.h" />
+		<Unit filename="Include/ProcessControl.h" />
+		<Unit filename="Include/ThreadException.h" />
+		<Unit filename="Include/ThreadLib.h" />
+		<Unit filename="Include/ThreadLibFunctions.h" />
+		<Unit filename="Include/Token.h" />
+		<Unit filename="Include/amd3dx.h" />
+		<Unit filename="Include/atomic.h" />
+		<Unit filename="Include/cmdlib.h" />
+		<Unit filename="Include/core.h" />
+		<Unit filename="Include/dbg.h" />
+		<Unit filename="Include/def.h" />
+		<Unit filename="Include/fasttimer.h" />
+		<Unit filename="Include/inttypes.h" />
+		<Unit filename="Include/mathlib.h" />
+		<Unit filename="Include/mem.h" />
+		<Unit filename="Include/memalloc.h" />
+		<Unit filename="Include/memdbgoff.h" />
+		<Unit filename="Include/memdbgon.h" />
+		<Unit filename="Include/memorypool.h" />
+		<Unit filename="Include/mempool.h" />
+		<Unit filename="Include/mynew.h" />
+		<Unit filename="Include/osAllocator.h" />
+		<Unit filename="Include/package.h" />
+		<Unit filename="Include/platform.h" />
+		<Unit filename="Include/priv_coreprecompiled.h" />
+		<Unit filename="Include/randomnumbers.h" />
+		<Unit filename="Include/strtools.h" />
+		<Unit filename="Include/unixdomsvr.h" />
+		<Unit filename="Include/vector2d.h" />
+		<Unit filename="Include/vector3d.h" />
+		<Unit filename="Include/vector4d.h" />
+		<Unit filename="Include/vmatrix.h" />
+		<Unit filename="Include/vplane.h" />
+		<Unit filename="Include/vprof.h" />
+		<Unit filename="Source/Chain.cpp" />
+		<Unit filename="Source/POSIX/atomic.cpp" />
+		<Unit filename="Source/ProcessControl.cpp" />
+		<Unit filename="Source/ThreadLibFunctions.cpp" />
+		<Unit filename="Source/Token.cpp" />
+		<Unit filename="Source/cpu.cpp" />
+		<Unit filename="Source/cpu_posix.cpp" />
+		<Unit filename="Source/crtdbg_FreeBSD.h" />
+		<Unit filename="Source/dbg.cpp" />
+		<Unit filename="Source/fasttimer.cpp" />
+		<Unit filename="Source/log.cpp" />
+		<Unit filename="Source/mathlib.cpp" />
+		<Unit filename="Source/mem.cpp" />
+		<Unit filename="Source/memdbg.cpp" />
+		<Unit filename="Source/mempool.cpp" />
+		<Unit filename="Source/memstd.cpp" />
+		<Unit filename="Source/memvalidate.cpp" />
+		<Unit filename="Source/mynew.cpp" />
+		<Unit filename="Source/osAllocator.cpp" />
+		<Unit filename="Source/platform.cpp" />
+		<Unit filename="Source/randomnumbers.cpp" />
+		<Unit filename="Source/strtools.cpp" />
+		<Unit filename="Source/unixdomsvr.cpp" />
+		<Unit filename="Source/vmatrix.cpp" />
+		<Unit filename="Source/vprof.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

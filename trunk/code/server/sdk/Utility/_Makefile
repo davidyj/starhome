@@ -1,0 +1,78 @@
+Inc_Path = -I ./Include  -I ../Engine/Include
+Define_Macros = -D _DEBUG
+CXXFLAGS = $(Define_Macros) -ggdb -Wall -m32 -mmmx -mfpmath=sse
+#CXXFLAGS = 
+Libs = -lpthread
+#Lib_Name = libUtility.a
+Lib_Name = libUtility.so
+Out_Path = ../lib
+Main_Objs= Chain.o cpu.o cpu_posix.o fasttimer.o mem.o memdbg.o mempool.o memstd.o memvalidate.o mynew.o osAllocator.o strtools.o vprof.o vmatrix.o atomic.o platform.o dbg.o
+Core_Objs = 
+#FixedAssert.o
+#handleexceptions.o
+#miscwinfunctions.o
+#randomnumbers.o
+Mathlib_Objs = mathlib.o
+
+All_Objects = $(Main_Objs) $(Core_Objs) $(Mathlib_Objs)
+
+$(Lib_Name): $(All_Objects)
+#	ar rcs $(Out_Path)/$(Lib_Name)  $(All_Objects)	
+	$(CXX) -fPIC -shared -o $(Out_Path)/$(Lib_Name) $(All_Objects) 
+#	mv *.o obj/
+Chain.o: Source/Chain.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+cpu.o: Source/cpu.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+cpu_posix.o: Source/cpu_posix.cpp      	
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+fasttimer.o: Source/fasttimer.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+mem.o: Source/mem.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+memdbg.o: Source/memdbg.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+mempool.o: Source/mempool.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+memstd.o: Source/memstd.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+memvalidate.o: Source/memvalidate.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+mynew.o: Source/mynew.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+osAllocator.o: Source/osAllocator.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+platform.o: Source/platform_FreeBSD.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c Source/platform_FreeBSD.cpp -o $@
+#platform.o: Source/platform_posix.cpp 
+strtools.o: Source/strtools.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+thread.o: Source/thread.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+vprof.o: Source/vprof.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+atomic.o: Source/POSIX/atomic.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+dbg.o: Source/dbg_FreeBSD.cpp
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c Source/dbg_FreeBSD.cpp -o $@
+
+#Core_Objs
+FixedAssert.o: Source/FixedAssert.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+handleexceptions.o: Source/handleexceptions.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+miscwinfunctions.o: Source/miscwinfunctions.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+randomnumbers.o: Source/randomnumbers.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+#Mathlib_Objs
+mathlib.o: Source/mathlib_FreeBSD.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c Source/mathlib_FreeBSD.cpp -o $@
+vmatrix.o: Source/vmatrix.cpp 
+	$(CXX)  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+clean:
+#	rm obj/*.o
+	rm *.o
+#	rm $(Out_Path)/$(Lib_Name)

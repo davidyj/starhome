@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Engine" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/libEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-gstabs" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__DEV__" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="cp bin/Debug/libEngine.so ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/libEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/Release/libEngine.so ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="ReleaseAddSymbol">
+				<Option output="bin/ReleaseAddSymbol/libEngine" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseAddSymbol/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wno-unknown-pragmas" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="objcopy --only-keep-debug bin/ReleaseAddSymbol/libEngine.so bin/ReleaseAddSymbol/libEngine.dbg" />
+					<Add after="strip -s bin/ReleaseAddSymbol/libEngine.so" />
+					<Add after="cp bin/ReleaseAddSymbol/libEngine.so ../../../exe/Servers/lib" />
+					<Add after="cp bin/ReleaseAddSymbol/libEngine.dbg ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-g" />
+			<Add option="-fexceptions" />
+			<Add option="-m64 -fPIC" />
+			<Add option="-DFREEBSD" />
+			<Add option="-DWCHAR_BYTE_SIZE=4" />
+			<Add option="-DX86AMD64" />
+			<Add directory="Include" />
+			<Add directory="../Def" />
+			<Add directory="../Port" />
+			<Add directory="../Utility/Include" />
+			<Add directory="." />
+			<Add directory="../External/lua/include" />
+		</Compiler>
+		<Linker>
+			<Add library="../lib/libUtility.a" />
+			<Add library="../lib/libz.a" />
+		</Linker>
+		<Unit filename="Include/Abi.h" />
+		<Unit filename="Include/AsyncFileDownLoad.h" />
+		<Unit filename="Include/AsyncFileRead.h" />
+		<Unit filename="Include/Atomic.h" />
+		<Unit filename="Include/BaseFileSystem.h" />
+		<Unit filename="Include/BaseObj.h" />
+		<Unit filename="Include/BitArray.h" />
+		<Unit filename="Include/CSVFileParser.h" />
+		<Unit filename="Include/Color.h" />
+		<Unit filename="Include/DirtyRect.h" />
+		<Unit filename="Include/Encrypt.h" />
+		<Unit filename="Include/EngineDefine.h" />
+		<Unit filename="Include/ExcelTable.h" />
+		<Unit filename="Include/File.h" />
+		<Unit filename="Include/FileStdio.h" />
+		<Unit filename="Include/FtpDown.h" />
+		<Unit filename="Include/GLock.h" />
+		<Unit filename="Include/Geo.h" />
+		<Unit filename="Include/ICommandLine.h" />
+		<Unit filename="Include/IDTable.h" />
+		<Unit filename="Include/IKeyValuesSystem.h" />
+		<Unit filename="Include/KeyValues.h" />
+		<Unit filename="Include/LuaEngine_Svr.h" />
+		<Unit filename="Include/McbXML.h" />
+		<Unit filename="Include/POSIX/GLock_.h" />
+		<Unit filename="Include/POSIX/atomic_.h" />
+		<Unit filename="Include/PathFunc.h" />
+		<Unit filename="Include/Pixel.h" />
+		<Unit filename="Include/Point.h" />
+		<Unit filename="Include/Rect.h" />
+		<Unit filename="Include/ResourceMgr.h" />
+		<Unit filename="Include/SFile2.h" />
+		<Unit filename="Include/SLock.h" />
+		<Unit filename="Include/TextTable.h" />
+		<Unit filename="Include/UserIDTable.h" />
+		<Unit filename="Include/UtlSingleton.h" />
+		<Unit filename="Include/UtlSortVector.h" />
+		<Unit filename="Include/VectorTable.h" />
+		<Unit filename="Include/XMLParser.h" />
+		<Unit filename="Include/ZipSystem.h" />
+		<Unit filename="Include/characterset.h" />
+		<Unit filename="Include/cmdlib.h" />
+		<Unit filename="Include/filesystem.h" />
+		<Unit filename="Include/ioapi.h" />
+		<Unit filename="Include/iowin32.h" />
+		<Unit filename="Include/posix_support.h" />
+		<Unit filename="Include/random.h" />
+		<Unit filename="Include/unzip.h" />
+		<Unit filename="Include/utlMD5.h" />
+		<Unit filename="Include/utlSafelinkedlist.h" />
+		<Unit filename="Include/utlbidirectionalset.h" />
+		<Unit filename="Include/utlbuffer.h" />
+		<Unit filename="Include/utldict.h" />
+		<Unit filename="Include/utlfixedlinkedlist.h" />
+		<Unit filename="Include/utlfixedmemory.h" />
+		<Unit filename="Include/utlhash.h" />
+		<Unit filename="Include/utllinkedlist.h" />
+		<Unit filename="Include/utlmap.h" />
+		<Unit filename="Include/utlmemory.h" />
+		<Unit filename="Include/utlmultilist.h" />
+		<Unit filename="Include/utlpriorityqueue.h" />
+		<Unit filename="Include/utlrbtree.h" />
+		<Unit filename="Include/utlstack.h" />
+		<Unit filename="Include/utlsymbol.h" />
+		<Unit filename="Include/utlvector.h" />
+		<Unit filename="Include/vector.h" />
+		<Unit filename="Include/zconf.h" />
+		<Unit filename="Include/zip.h" />
+		<Unit filename="Include/zlib.h" />
+		<Unit filename="Source/AsyncFileDownload.cpp" />
+		<Unit filename="Source/AsyncFileRead.cpp" />
+		<Unit filename="Source/BaseFileSystem.cpp" />
+		<Unit filename="Source/BaseObj.cpp" />
+		<Unit filename="Source/BitArray.cpp" />
+		<Unit filename="Source/CSVFileParser.cpp" />
+		<Unit filename="Source/DirtyRect.cpp" />
+		<Unit filename="Source/Encrypt.cpp" />
+		<Unit filename="Source/Engine_POSIX.cpp" />
+		<Unit filename="Source/ExcelTable.cpp" />
+		<Unit filename="Source/File.cpp" />
+		<Unit filename="Source/FileStdio.cpp" />
+		<Unit filename="Source/FtpDown.cpp" />
+		<Unit filename="Source/Geo.cpp" />
+		<Unit filename="Source/IDTable.cpp" />
+		<Unit filename="Source/KeyValues.cpp" />
+		<Unit filename="Source/KeyValuesSystem.cpp" />
+		<Unit filename="Source/LuaEngine_Svr.cpp" />
+		<Unit filename="Source/McbXML.cpp" />
+		<Unit filename="Source/PathFunc.cpp" />
+		<Unit filename="Source/Point.cpp" />
+		<Unit filename="Source/Rect.cpp" />
+		<Unit filename="Source/ResourceMgr.cpp" />
+		<Unit filename="Source/SFile2.cpp" />
+		<Unit filename="Source/SLock.cpp" />
+		<Unit filename="Source/SThread.cpp" />
+		<Unit filename="Source/TextTable.cpp" />
+		<Unit filename="Source/UserIDTable.cpp" />
+		<Unit filename="Source/VectorTable.cpp" />
+		<Unit filename="Source/XMLParser.cpp" />
+		<Unit filename="Source/ZipSystem.cpp" />
+		<Unit filename="Source/characterset.cpp" />
+		<Unit filename="Source/cmdlib.cpp" />
+		<Unit filename="Source/commandline.cpp" />
+		<Unit filename="Source/filesystem_stdio.cpp" />
+		<Unit filename="Source/posix_support.cpp" />
+		<Unit filename="Source/random.cpp" />
+		<Unit filename="Source/utlMD5.cpp" />
+		<Unit filename="Source/utlbuffer.cpp" />
+		<Unit filename="Source/utlsymbol.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="../Utility/Source/vmatrix.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

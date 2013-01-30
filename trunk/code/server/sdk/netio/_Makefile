@@ -1,0 +1,23 @@
+Inc_Path = -I ./Include  -I ../Engine/Include -I ../Utility/Include -I ../Common
+Define_Macros = -D _DEBUG
+CXXFLAGS = $(Define_Macros) -ggdb
+Libs = -lpthread -L ../lib/ -lUtility 
+So_Name = libGamenetcommon.so
+Out_Path = ../lib
+All_Objs = GameNet.o PacketDefine.o SelectIO.o KQueue.o
+
+$(So_Name): $(All_Objs) 
+	g++ -fPIC -shared $(All_Objs)  $(Libs) -o $(Out_Path)/$(So_Name)  
+#	mv *.o obj/
+GameNet.o: Source/GameNet.cpp
+	g++  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+PacketDefine.o: Source/PacketDefine.cpp
+	g++  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+SelectIO.o: Source/POSIX/SelectIO.cpp	
+	g++  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+KQueue.o: Source/POSIX/KQueue.cpp	
+	g++  $(Inc_Path) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	rm *.o
+#	rm $(Out_Path)/$(So_Name)

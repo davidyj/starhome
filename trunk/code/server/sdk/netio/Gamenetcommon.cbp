@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Gamenetcommon" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/libGamenetcommon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-gstabs" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D__DEV__" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="cp bin/Debug/libGamenetcommon.so ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/libGamenetcommon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/Release/libGamenetcommon.so ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="ReleaseAddSymbol">
+				<Option output="bin/ReleaseAddSymbol/libGamenetcommon" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseAddSymbol/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wno-unknown-pragmas" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="objcopy --only-keep-debug bin/ReleaseAddSymbol/libGamenetcommon.so bin/ReleaseAddSymbol/libGamenetcommon.dbg" />
+					<Add after="strip -s bin/ReleaseAddSymbol/libGamenetcommon.so" />
+					<Add after="cp bin/ReleaseAddSymbol/libGamenetcommon.so ../../../exe/Servers/lib" />
+					<Add after="cp bin/ReleaseAddSymbol/libGamenetcommon.dbg ../../../exe/Servers/lib" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-g" />
+			<Add option="-fexceptions" />
+			<Add option="-m64 -fPIC" />
+			<Add option="-DFREEBSD" />
+			<Add directory="Include" />
+			<Add directory="../Engine/Include" />
+			<Add directory="../Utility/Include" />
+			<Add directory="../Port" />
+			<Add directory="../Def" />
+		</Compiler>
+		<Linker>
+			<Add library="../lib/libUtility.a" />
+		</Linker>
+		<Unit filename="Include/GameNet.h" />
+		<Unit filename="Include/Gamenetcommondefine.h" />
+		<Unit filename="Include/Net.h" />
+		<Unit filename="Include/NetBuffer.h" />
+		<Unit filename="Include/OSNet.h" />
+		<Unit filename="Include/POSIX/KQueue.h" />
+		<Unit filename="Include/POSIX/SelectIO.h" />
+		<Unit filename="Include/PacketDefine.h" />
+		<Unit filename="Include/PacketDefineHead.h" />
+		<Unit filename="Include/SelectIO.h" />
+		<Unit filename="Include/SocketHashTable.h" />
+		<Unit filename="Include/StdAfx.h" />
+		<Unit filename="Source/GameNet.cpp" />
+		<Unit filename="Source/Gamenetcommon.cpp" />
+		<Unit filename="Source/NetBuffer.cpp" />
+		<Unit filename="Source/POSIX/KQueue.cpp" />
+		<Unit filename="Source/POSIX/SelectIO.cpp" />
+		<Unit filename="Source/PacketDefine.cpp" />
+		<Unit filename="Source/SocketHashTable.cpp" />
+		<Unit filename="Source/main.cpp" />
+		<Unit filename="Source/stdafx.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
