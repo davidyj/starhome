@@ -2,6 +2,7 @@
 #include "NetBuffer.h"
 #include "memorypool.h"
 #include "utlmap.h"
+#include "utlsymbol.h"
 
 class CSession
 {
@@ -12,8 +13,9 @@ public:
 	int recv(char* buf,int size);
 
 protected:
-	SOCKET m_socket;
-	CUtlBuffer m_msgbuffer;
+	SOCKET		m_socket;
+	CUtlBuffer	m_msgbuffer;
+	CUtlSymbol	m_usernameid;
 };
 
 typedef CClassMemoryPool<CSession> SesseionPool;
@@ -24,7 +26,7 @@ public:
 	CSessionMgr();
 	~CSessionMgr();
 
-	static CSessionMgr &getSingle()
+	static CSessionMgr &getsingle()
 	{
 		CSessionMgr mgr;
 		return mgr;
