@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "utlsymbol.h"
 #include "utlmap.h"
+#include "npc.h"
+#include "build.h"
 
 class CUser
 {
@@ -9,7 +11,15 @@ public:
 	~CUser();
 
 public:
-	CUtlSymbol m_name;
+	CNPC* createNPC(const char* name);
+	CNPC* destroyNPC(CNPC* pNPC);
+	
+	bool addNPC(CNPC* pNPC);
+	bool removeNPC(CNPC* pNPC);
+	CNPC* getNPC(const char* name);
+
+public:
+	CUtlLinkedList<CNPC*>	m_NPCList;
 };
 
 typedef CMemoryPool<CUser> UserPool;

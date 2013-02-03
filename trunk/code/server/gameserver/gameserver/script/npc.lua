@@ -1,0 +1,1 @@
+dofile("..\\npc_liyisheng.lua")
