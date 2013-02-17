@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "utlsymbol.h"
+
 
 class CBuild
 {
@@ -13,7 +13,6 @@ protected:
 	CUtlSymbol	m_name;
 	CUtlSymbol	m_username;
 	int			m_level;
-
 };
 
 typedef CClassMemoryPool<CBuild>	BuildPool;

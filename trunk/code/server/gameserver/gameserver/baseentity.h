@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "utldict.h"
 
 typedef CUtlDict<char*,byte>	stringlist;
 typedef CUtlDict<int,byte>		intlist;
@@ -24,4 +24,4 @@ protected:
 	intlist		m_intlist;
 	int64list	m_int64list;
 	stringlist	m_stringlist;
-}
+};

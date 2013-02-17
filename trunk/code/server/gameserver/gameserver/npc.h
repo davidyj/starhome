@@ -1,7 +1,6 @@
-#include "stdafx.h"
 #include "baseentity.h"
 #include "Event.h"
-
+#include "mempool.h"
 
 
 class CNPC : public CBaseEntity
@@ -13,6 +12,8 @@ public:
 public:
 	void logic(int timer);
 	void triger(CEvent* pEvent);
+
+	void say(int id,const char* msg);
 
 protected:
 	CUtlSymbol	m_username;
@@ -40,7 +41,8 @@ public:
 };
 
 static int lua_register_npc(int id);
-static int lua_set_int(const char*job,const char* key,int value);
-static int lua_set_string(const char* job,const char* key,const char* value);
-static int lua_get_int(const char* job,const char* key);
-static char* lua_get_string(const char* job,const char* key);
+static int lua_set_int(const char* name,const char* key,int value);
+static int lua_set_string(const char* name,const char* key,const char* value);
+static int lua_get_int(const char* name,const char* key);
+static char* lua_get_string(const char* name,const char* key);
+static int lua_say(const char* name,int id,const char* msg);

@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "utlsymbol.h"
 #include "utlmap.h"
 #include "npc.h"

@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "LuaEngine_Svr.h"
+#include "PathFunc.h"
 
 const int PATHSIZE = 512;
 char g_szExePath[PATHSIZE] = {0};
@@ -10,7 +11,10 @@ char g_szExePath[PATHSIZE] = {0};
 int _tmain(int argc, _TCHAR* argv[])
 {
 
+	Plat_SetSimpleLogName("gameserver.log");
+
 	GetExePath( g_szExePath, PATHSIZE );
+	Log("work path %s",g_szExePath);
 
 	//≥ı ºªØlua“˝«Ê
 	if( !GetLuaEngine_Svr().Init(10240) )

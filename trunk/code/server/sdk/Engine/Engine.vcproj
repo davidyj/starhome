@@ -20,8 +20,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
+			OutputDirectory=".\..\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\..\..\..\InterMediate\Debug\GameSDK\Engine"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -83,7 +83,7 @@
 				OutputFile="$(OutDir)/BaseEngineD.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\..\Lib;..\External"
+				AdditionalLibraryDirectories=".\..\Lib;..\External"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
@@ -115,113 +115,13 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.lib ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll ..\..\..\..\Exe\Forever&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|x64"
-			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
-			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="3"
-				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
-				HeaderFileName=""
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include;..\External\lua\include"
-				PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;__DEV__;X86AMD64"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="2052"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="x64UtilityD.lib zlibwapi.lib luaD.lib psapi.lib"
-				OutputFile="$(OutDir)/x64BaseEngineD.dll"
-				LinkIncremental="2"
-				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\Lib;..\External\x64"
-				IgnoreDefaultLibraryNames=""
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				GenerateMapFile="true"
-				MapExports="true"
-				BaseAddress="0x61000000"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(OutDir)/$(TargetName).lib"
-				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\loginserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\dataserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\dbserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\superserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\CommunityServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\DNSServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\GMServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\NameServer&#x0D;&#x0A;&#x0D;&#x0A;"
+				CommandLine="copy .\..\..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll .\..\Lib\&#x0D;&#x0A;copy .\..\..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.lib .\..\Lib\&#x0D;&#x0A;copy .\..\..\..\..\..\InterMediate\Debug\GameSDK\Engine\BaseEngineD.dll .\..\..\..\..\Exe\gameserver&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Engine"
+			OutputDirectory=".\..\..\..\..\..\InterMediate\Release\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\..\..\..\InterMediate\Release\GameSDK\Engine"
 			ConfigurationType="2"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -317,110 +217,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.lib ..\..\Lib\&#x0D;&#x0A;copy ..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll ..\..\..\..\Exe\Server\gameserver\&#x0D;&#x0A;&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|x64"
-			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
-			ConfigurationType="2"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="3"
-				TypeLibraryName=".\Release/Engine.tlb"
-				HeaderFileName=""
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="0"
-				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include;..\External\lua\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;X64_WIN;__DEV__;X86AMD64"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				StructMemberAlignment="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="NDEBUG"
-				Culture="2052"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="x64UtilityR.lib zlibwapi.lib lua.lib psapi.lib"
-				OutputFile="$(OutDir)/x64BaseEngineR.dll"
-				LinkIncremental="1"
-				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="..\Lib;..\External\x64"
-				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
-				GenerateMapFile="true"
-				MapExports="true"
-				BaseAddress="0x61000000"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
-				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\GMServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\NameServer\&#x0D;&#x0A;"
+				CommandLine="copy .\..\..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll .\..\Lib\&#x0D;&#x0A;copy .\..\..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.lib .\..\Lib\&#x0D;&#x0A;copy .\..\..\..\..\..\InterMediate\Release\GameSDK\Engine\BaseEngineR.dll .\..\..\..\..\exe\gameserver\&#x0D;&#x0A;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -509,87 +306,6 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="LibDebug|x64"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="3"
-				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
-				HeaderFileName=""
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="Include,..\Utility\Include,..\MathLib\Include"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_LIB;_ENGINELIB"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile="$(OutDir)/EngineLibD.pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="2052"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/EngineLibD.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\EngineLib\EngineLibD.lib ..\Lib&#x0D;&#x0A;&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
 			Name="LibRelease|Win32"
 			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\EngineLib"
 			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\EngineLib"
@@ -635,86 +351,6 @@
 				WarningLevel="4"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_DEBUG"
-				Culture="2052"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/EngineLib.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\EngineLib\EngineLib.lib ..\Lib&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="LibRelease|x64"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="false"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="true"
-				SuppressStartupBanner="true"
-				TargetEnvironment="3"
-				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
-				HeaderFileName=""
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="Include,..\Utility\Include,..\MathLib\Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_LIB;_ENGINELIB"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile="$(OutDir)/Enginelib.pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				SuppressStartupBanner="true"
-				DebugInformationFormat="3"
 				CompileAs="0"
 			/>
 			<Tool
@@ -852,77 +488,6 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Final|x64"
-			OutputDirectory=".\..\..\InterMediate\Final\GameSDK\Engine"
-			IntermediateDirectory=".\..\..\InterMediate\Final\GameSDK\Engine"
-			ConfigurationType="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;X64_WIN;X86AMD64"
-				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="x64Utility.lib zlibwapi.lib"
-				OutputFile="$(OutDir)/x64BaseEngine.dll"
-				AdditionalLibraryDirectories="..\Lib;..\External\x64"
-				GenerateDebugInformation="true"
-				BaseAddress="0x61000000"
-				RandomizedBaseAddress="1"
-				DataExecutionPrevention="0"
-				ImportLibrary="$(TargetDir)$(TargetName).lib"
-				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.pdb ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
 			Name="FullOptimize|Win32"
 			OutputDirectory=".\..\..\InterMediate\FullOptimize\GameSDK\Engine"
 			IntermediateDirectory=".\..\..\InterMediate\FullOptimize\GameSDK\Engine"
@@ -1027,6 +592,441 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.pdb ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;copy ..\..\InterMediate\FullOptimize\GameSDK\Engine\BaseEngine.dll ..\..\..\Exe\Servers\GMServer\&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Engine"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include;..\External\lua\include"
+				PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;__DEV__;X86AMD64"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2052"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="x64UtilityD.lib zlibwapi.lib luaD.lib psapi.lib"
+				OutputFile="$(OutDir)/x64BaseEngineD.dll"
+				LinkIncremental="2"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\Lib;..\External\x64"
+				IgnoreDefaultLibraryNames=""
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
+				GenerateMapFile="true"
+				MapExports="true"
+				BaseAddress="0x61000000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary="$(OutDir)/$(TargetName).lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\loginserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\dataserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\dbserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\superserver&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\CommunityServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\DNSServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\GMServer&#x0D;&#x0A;copy ..\..\InterMediate\Debug\GameSDK\Engine\x64BaseEngineD.dll ..\..\..\Exe\servers\NameServer&#x0D;&#x0A;&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Engine"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\Release/Engine.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				FavorSizeOrSpeed="1"
+				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include;..\External\lua\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;X64_WIN;__DEV__;X86AMD64"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="2052"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="x64UtilityR.lib zlibwapi.lib lua.lib psapi.lib"
+				OutputFile="$(OutDir)/x64BaseEngineR.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\Lib;..\External\x64"
+				ManifestFile="$(IntDir)\$(TargetFileName).intermediate.manifest"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/$(TargetName).pdb"
+				GenerateMapFile="true"
+				MapExports="true"
+				BaseAddress="0x61000000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\GMServer\&#x0D;&#x0A;copy ..\..\InterMediate\Release\GameSDK\Engine\x64BaseEngineR.dll ..\..\..\Exe\Servers\NameServer\&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="LibDebug|x64"
+			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="Include,..\Utility\Include,..\MathLib\Include"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_LIB;_ENGINELIB"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile="$(OutDir)/EngineLibD.pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2052"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/EngineLibD.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\EngineLib\EngineLibD.lib ..\Lib&#x0D;&#x0A;&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="LibRelease|x64"
+			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="3"
+				TypeLibraryName=".\..\..\InterMediate\Debug\GameSDK\Engine/Engine.tlb"
+				HeaderFileName=""
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="Include,..\Utility\Include,..\MathLib\Include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_LIB;_ENGINELIB"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile="$(OutDir)/Enginelib.pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="2052"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/EngineLib.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Release\GameSDK\EngineLib\EngineLib.lib ..\Lib&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Final|x64"
+			OutputDirectory=".\..\..\InterMediate\Final\GameSDK\Engine"
+			IntermediateDirectory=".\..\..\InterMediate\Final\GameSDK\Engine"
+			ConfigurationType="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="Include;..\Utility\Include;..\MathLib\Include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;ENGINE_EXPORTS;ZLIB_WINAPI;WCHAR_BYTE_SIZE=2;X64_WIN;X86AMD64"
+				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="x64Utility.lib zlibwapi.lib"
+				OutputFile="$(OutDir)/x64BaseEngine.dll"
+				AdditionalLibraryDirectories="..\Lib;..\External\x64"
+				GenerateDebugInformation="true"
+				BaseAddress="0x61000000"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
+				ImportLibrary="$(TargetDir)$(TargetName).lib"
+				TargetMachine="17"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.lib ..\Lib\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.pdb ..\..\..\Exe\Forever\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\loginserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\dataserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\dbserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\superserver\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\CommunityServer\&#x0D;&#x0A;copy ..\..\InterMediate\Final\GameSDK\Engine\x64BaseEngine.dll ..\..\..\Exe\Servers\DNSServer\&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -1149,33 +1149,12 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1190,29 +1169,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="LibDebug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="LibRelease|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="LibRelease|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1238,6 +1195,49 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibDebug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibRelease|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1313,33 +1313,12 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1354,29 +1333,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="LibDebug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="LibRelease|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="LibRelease|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1402,6 +1359,49 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibDebug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibRelease|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1425,33 +1425,12 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1466,29 +1445,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="LibDebug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="LibRelease|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						BasicRuntimeChecks="3"
-						UsePrecompiledHeader="2"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="LibRelease|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1514,6 +1471,49 @@
 						Name="VCCLCompilerTool"
 						Optimization="2"
 						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						PreprocessorDefinitions="WIN32;X64_WIN;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="2"
+						PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibDebug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibRelease|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						Optimization="0"
+						AdditionalIncludeDirectories=""
+						BasicRuntimeChecks="3"
+						UsePrecompiledHeader="2"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1666,14 +1666,6 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="0"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="LibDebug|Win32"
 					>
 					<Tool
@@ -1682,7 +1674,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="LibDebug|x64"
+					Name="LibRelease|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1690,7 +1682,15 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="LibRelease|Win32"
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="0"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="LibDebug|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2030,31 +2030,7 @@
 				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="Debug|x64"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-					BasicRuntimeChecks="3"
-					UsePrecompiledHeader="1"
-					PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
-					ProgramDataBaseFileName="$(OutDir)/vc90.pdb"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="2"
-					PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
-					UsePrecompiledHeader="1"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|x64"
 				>
 				<Tool
 					Name="VCCLCompilerTool"
@@ -2076,31 +2052,7 @@
 				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="LibDebug|x64"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					IgnoreStandardIncludePath="false"
-					BasicRuntimeChecks="3"
-					UsePrecompiledHeader="1"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
 				Name="LibRelease|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					Optimization="0"
-					AdditionalIncludeDirectories=""
-					IgnoreStandardIncludePath="false"
-					BasicRuntimeChecks="3"
-					UsePrecompiledHeader="1"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="LibRelease|x64"
 				>
 				<Tool
 					Name="VCCLCompilerTool"
@@ -2128,6 +2080,54 @@
 					Name="VCCLCompilerTool"
 					Optimization="2"
 					PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					UsePrecompiledHeader="1"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Debug|x64"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="0"
+					AdditionalIncludeDirectories=""
+					PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					BasicRuntimeChecks="3"
+					UsePrecompiledHeader="1"
+					PrecompiledHeaderFile="$(IntDir)\$(TargetName).pch"
+					ProgramDataBaseFileName="$(OutDir)/vc90.pdb"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="Release|x64"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="2"
+					PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_MBCS;_USRDLL;ENGINE_EXPORTS;$(NoInherit)"
+					UsePrecompiledHeader="1"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="LibDebug|x64"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="0"
+					AdditionalIncludeDirectories=""
+					IgnoreStandardIncludePath="false"
+					BasicRuntimeChecks="3"
+					UsePrecompiledHeader="1"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="LibRelease|x64"
+				>
+				<Tool
+					Name="VCCLCompilerTool"
+					Optimization="0"
+					AdditionalIncludeDirectories=""
+					IgnoreStandardIncludePath="false"
+					BasicRuntimeChecks="3"
 					UsePrecompiledHeader="1"
 				/>
 			</FileConfiguration>

@@ -21,8 +21,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
+			OutputDirectory=".\..\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\..\..\..\InterMediate\Debug\GameSDK\Utility"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -87,85 +87,13 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\..\..\InterMediate\Debug\GameSDK\Utility\UtilityD.lib ..\..\Lib\&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|x64"
-			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				TargetEnvironment="3"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="..\Utility,Include,..\Engine\Include"
-				PreprocessorDefinitions="WIN32;_DEBUG;X64_WIN;_LIB;__DEV__;X86AMD64"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/x64$(ProjectName)D.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Utility\x64UtilityD.lib ..\Lib\&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;"
+				CommandLine="copy .\..\..\..\..\..\InterMediate\Debug\GameSDK\Utility\UtilityD.lib .\..\Lib\&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\..\..\InterMediate\Release\GameSDK\Utility"
+			OutputDirectory=".\..\..\..\..\..\InterMediate\Release\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\..\..\..\InterMediate\Release\GameSDK\Utility"
 			ConfigurationType="4"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
@@ -232,81 +160,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\..\..\InterMediate\Release\GameSDK\Utility\UtilityR.lib ..\..\Lib\&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|x64"
-			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				TargetEnvironment="3"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="0"
-				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..\Utility;Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB£»_CRT_SECURE_NO_WARNINGS;X64_WIN;__DEV__;X86AMD64"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				StructMemberAlignment="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\x64$(ProjectName)R.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Utility\x64UtilityR.lib ..\Lib\&#x0D;&#x0A;"
+				CommandLine="copy .\..\..\..\..\..\InterMediate\Release\GameSDK\Utility\UtilityR.lib .\..\Lib\&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -331,79 +185,6 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="0"
-				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..\Utility,Include,..\Engine\Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				StructMemberAlignment="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderFile="$(OutDir)/Utility.pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Utility\Utility.lib ..\Lib&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
-			Name="UIDebug|x64"
-			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
-			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				TargetEnvironment="3"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
@@ -527,80 +308,6 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="Final|x64"
-			OutputDirectory=".\..\..\InterMediate\Final\GameSDK\Utility"
-			IntermediateDirectory=".\..\..\InterMediate\Final\GameSDK\Utility"
-			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-				TargetEnvironment="3"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="3"
-				InlineFunctionExpansion="0"
-				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="..\Utility;Include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;X64_WIN;X86AMD64"
-				StringPooling="true"
-				RuntimeLibrary="0"
-				StructMemberAlignment="0"
-				EnableFunctionLevelLinking="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderFile="$(OutDir)/x64$(ProjectName).pch"
-				AssemblerListingLocation="$(OutDir)/"
-				ObjectFile="$(OutDir)/"
-				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
-				WarningLevel="4"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\x64$(ProjectName).lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="copy ..\..\InterMediate\Final\GameSDK\Utility\x64Utility.lib ..\Lib\&#x0D;&#x0A;"
-			/>
-		</Configuration>
-		<Configuration
 			Name="FullOptimize|Win32"
 			OutputDirectory=".\..\..\InterMediate\FullOptimize\GameSDK\Utility"
 			IntermediateDirectory=".\..\..\InterMediate\FullOptimize\GameSDK\Utility"
@@ -673,6 +380,299 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				CommandLine="copy ..\..\InterMediate\FullOptimize\GameSDK\Utility\Utility.lib ..\Lib\&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\InterMediate\Debug\GameSDK\Utility"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\Utility,Include,..\Engine\Include"
+				PreprocessorDefinitions="WIN32;_DEBUG;X64_WIN;_LIB;__DEV__;X86AMD64"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/x64$(ProjectName)D.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Debug\GameSDK\Utility\x64UtilityD.lib ..\Lib\&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\InterMediate\Release\GameSDK\Utility"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				FavorSizeOrSpeed="1"
+				AdditionalIncludeDirectories="..\Utility;Include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB£»_CRT_SECURE_NO_WARNINGS;X64_WIN;__DEV__;X86AMD64"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(OutDir)/$(TargetName).pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\x64$(ProjectName)R.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Utility\x64UtilityR.lib ..\Lib\&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="UIDebug|x64"
+			OutputDirectory="$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				FavorSizeOrSpeed="1"
+				AdditionalIncludeDirectories="..\Utility,Include,..\Engine\Include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="2"
+				PrecompiledHeaderFile="$(OutDir)/Utility.pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Release\GameSDK\Utility\Utility.lib ..\Lib&#x0D;&#x0A;"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Final|x64"
+			OutputDirectory=".\..\..\InterMediate\Final\GameSDK\Utility"
+			IntermediateDirectory=".\..\..\InterMediate\Final\GameSDK\Utility"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				FavorSizeOrSpeed="1"
+				AdditionalIncludeDirectories="..\Utility;Include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;X64_WIN;X86AMD64"
+				StringPooling="true"
+				RuntimeLibrary="0"
+				StructMemberAlignment="0"
+				EnableFunctionLevelLinking="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(OutDir)/x64$(ProjectName).pch"
+				AssemblerListingLocation="$(OutDir)/"
+				ObjectFile="$(OutDir)/"
+				ProgramDataBaseFileName="$(OutDir)/vc70.pdb"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\x64$(ProjectName).lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="copy ..\..\InterMediate\Final\GameSDK\Utility\x64Utility.lib ..\Lib\&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -861,23 +861,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -893,14 +877,6 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="UIDebug|x64"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="1"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="Final|Win32"
 					>
 					<Tool
@@ -909,7 +885,7 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Final|x64"
+					Name="FullOptimize|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -917,7 +893,31 @@
 					/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="FullOptimize|Win32"
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="UIDebug|x64"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Final|x64"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

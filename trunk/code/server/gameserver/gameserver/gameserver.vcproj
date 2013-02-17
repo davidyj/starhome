@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			OutputDirectory=".\..\..\..\..\InterMediate\debug\gameserver"
+			IntermediateDirectory=".\..\..\..\..\InterMediate\debug\gameserver"
 			ConfigurationType="1"
 			CharacterSet="1"
 			>
@@ -41,6 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\..\sdk\Utility\Include;..\..\sdk\engine\include;..\..\sdk\nio\inlcude;..\..\sdk\external\lua\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;LUA_FUNCTION_IMPLEMENTATION"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -60,8 +61,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="UtilityD.lib BaseEngineD.lib NetEngineD.lib"
+				OutputFile="$(OutDir)\$(ProjectName)D.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\..\lib"
+				AdditionalLibraryDirectories=".\..\..\sdk\lib"
+				IgnoreDefaultLibraryNames="LIBCMTD.lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -86,6 +90,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy .\..\..\..\..\InterMediate\debug\gameserver\*.exe .\..\..\..\..\exe\gameserver\&#x0D;&#x0A;copy .\..\..\..\..\InterMediate\debug\gameserver\*.pdb .\..\..\..\..\exe\gameserver\"
 			/>
 		</Configuration>
 		<Configuration
@@ -115,6 +120,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="..\..\sdk\Utility\Include;..\..\sdk\engine\include;..\..\sdk\nio\inlcude;..\..\sdk\external\lua\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;LUA_FUNCTION_IMPLEMENTATION"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -133,7 +139,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies="Utility.lib BaseEngine.lib NetEngine.lib"
 				LinkIncremental="1"
+				IgnoreDefaultLibraryNames="LIBCMT.lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -176,15 +184,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\build.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\buildtemplate.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\entity.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\event.cpp"
 				>
 			</File>
 			<File
@@ -192,7 +196,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\message.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\nio.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\npc.cpp"
 				>
 			</File>
 			<File
@@ -228,7 +240,15 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\timer.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\user.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\world.cpp"
 				>
 			</File>
 		</Filter>
@@ -242,14 +262,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\build.h"
-				>
-			</File>
-			<File
-				RelativePath=".\buildtemplate.h"
-				>
-			</File>
-			<File
 				RelativePath=".\common.h"
 				>
 			</File>
@@ -258,11 +270,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\event.h"
+				>
+			</File>
+			<File
 				RelativePath=".\luafunc.h"
 				>
 			</File>
 			<File
+				RelativePath=".\message.h"
+				>
+			</File>
+			<File
 				RelativePath=".\nio.h"
+				>
+			</File>
+			<File
+				RelativePath=".\npc.h"
 				>
 			</File>
 			<File
@@ -286,7 +310,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\timer.h"
+				>
+			</File>
+			<File
 				RelativePath=".\user.h"
+				>
+			</File>
+			<File
+				RelativePath=".\world.h"
 				>
 			</File>
 		</Filter>
@@ -300,11 +332,23 @@
 			Name="script"
 			>
 			<File
-				RelativePath=".\build.lua"
+				RelativePath=".\script\build.lua"
 				>
 			</File>
 			<File
-				RelativePath=".\config.lua"
+				RelativePath=".\script\config.lua"
+				>
+			</File>
+			<File
+				RelativePath=".\script\npc.lua"
+				>
+			</File>
+			<File
+				RelativePath=".\script\npc_liyisheng.lua"
+				>
+			</File>
+			<File
+				RelativePath=".\script\world.lua"
 				>
 			</File>
 		</Filter>

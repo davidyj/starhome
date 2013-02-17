@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "gamenet.h"
 
 class CNIO : public CGameNet

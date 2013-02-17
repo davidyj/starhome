@@ -1,4 +1,3 @@
-#include "StdAfx.h"
 #include "baseentity.h"
 
 class CWorld : public CBaseEntity

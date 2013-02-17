@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "NetBuffer.h"
 #include "memorypool.h"
 #include "utlmap.h"
@@ -10,7 +9,11 @@ public:
 	CSession();
 	~CSession();
 
-	int recv(char* buf,int size);
+	int		accept(SOCKET s);
+	void	break(SOCKET s);
+
+	int		send(char* buf,int size);
+	int		recv(char* buf,int size);
 
 protected:
 	SOCKET		m_socket;
