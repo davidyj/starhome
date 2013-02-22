@@ -2,7 +2,10 @@ package com.example.sample_character;
 
 import java.util.ArrayList;
 
+import org.cocos2d.actions.base.RepeatForever;
+import org.cocos2d.actions.interval.Animate;
 import org.cocos2d.layers.ColorLayer;
+import org.cocos2d.nodes.Animation;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Sprite;
 import org.cocos2d.nodes.Scene;
@@ -18,25 +21,28 @@ import android.content.Context;
 
 public class CGameLayer extends ColorLayer {
 
+	private Sprite player;
+	private Animate alter;
+	
 	protected CGameLayer(CCColor4B color) {
 		super(color);
 		
 		// TODO Auto-generated constructor stub		
-		this.setIsTouchEnabled(true);
+		this.setIsTouchEnabled(true);		
+			
+		CCSize winSize = Director.sharedDirector().displaySize();		
+		player = Sprite.sprite("character_00002000_alert_0_body.png");			
+		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);
 		
-		_targets = new ArrayList<Sprite>();
-		_projectiles = new ArrayList<Sprite>();
-		_projectilesDestroyed = 0;
+		addChild(player);			
 		
-		CCSize winSize = Director.sharedDirector().displaySize();
-		Sprite player = Sprite.sprite("character_00002000_alert_0_body.png");
+		Animation player_action_alter = new Animation("alter",1.0f / 2.0f);		
+		player_action_alter.addFrame("character_00002000_alert_0_body.png");
+		player_action_alter.addFrame("character_00002000_alert_1_body.png");
+		player_action_alter.addFrame("character_00002000_alert_2_body.png");
 		
-		player.setPosition( player.getWidth() / 2.0f, winSize.height / 2.0f);
-		
-		addChild(player);
-		
-		// Handle sound
-		Context context = Director.sharedDirector().getActivity();		
+		alter = Animate.action(player_action_alter);		
+		player.runAction(RepeatForever.action(alter));
 		
 		this.schedule("gameLogic", 1.0f);
 		this.schedule("update");
@@ -59,7 +65,7 @@ public class CGameLayer extends ColorLayer {
 	public void gameLogic(float dt)
 	{
 		
-	}
+	}	
 	
 	public void update(float dt)
 	{
