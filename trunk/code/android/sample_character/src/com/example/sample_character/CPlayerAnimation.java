@@ -473,4 +473,6 @@ public class CPlayerAnimation  {
 		ani.addFrame("character_00002000_walk2_3_hand.png");
 		hand.put("walk2",ani);
 	}
+
+	
 }
