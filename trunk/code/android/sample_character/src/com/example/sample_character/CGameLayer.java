@@ -21,7 +21,7 @@ import android.content.Context;
 
 public class CGameLayer extends ColorLayer {
 
-	private Sprite player;
+	private CPlayerSprite player;
 	private Animate alter;
 	
 	protected CGameLayer(CCColor4B color) {
@@ -31,18 +31,17 @@ public class CGameLayer extends ColorLayer {
 		this.setIsTouchEnabled(true);		
 			
 		CCSize winSize = Director.sharedDirector().displaySize();		
-		player = Sprite.sprite("character_00002000_alert_0_body.png");			
-		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);
+		player = new CPlayerSprite("character_00002000_alert_0_body.png");			
+		player.sprite.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);		
 		
-		addChild(player);			
+		addChild(player.sprite);					
 		
-		Animation player_action_alter = new Animation("alter",1.0f / 2.0f);		
-		player_action_alter.addFrame("character_00002000_alert_0_body.png");
-		player_action_alter.addFrame("character_00002000_alert_1_body.png");
-		player_action_alter.addFrame("character_00002000_alert_2_body.png");
+		player.SetAction("fly");
 		
-		alter = Animate.action(player_action_alter);		
-		player.runAction(RepeatForever.action(alter));
+		//Animation player_action_alter = new Animation("alter",1.0f / 2.0f);		
+		//alter = Animate.action(player_action_alter);		
+		//player.runAction(RepeatForever.action(alter));
+		
 		
 		this.schedule("gameLogic", 1.0f);
 		this.schedule("update");

@@ -2,28 +2,61 @@ package com.example.sample_character;
 
 import java.util.HashMap;
 
+import org.cocos2d.actions.base.RepeatForever;
+import org.cocos2d.actions.interval.Animate;
 import org.cocos2d.nodes.Animation;
+import org.cocos2d.nodes.Sprite;
+import org.cocos2d.nodes.TextureManager;
+import org.cocos2d.opengl.Texture2D;
 
-public class CPlayerAnimation  {
-
-	private int character;
-	private float interval = 0.1f;
-	private HashMap<String, Animation> body = new HashMap<String, Animation>();
-	private HashMap<String, Animation> arm = new HashMap<String, Animation>();
-	private HashMap<String, Animation> armoverhair = new HashMap<String, Animation>();
-	private HashMap<String, Animation> lhand = new HashMap<String, Animation>();
-	private HashMap<String, Animation> rhand = new HashMap<String, Animation>();
-	private HashMap<String, Animation> hand = new HashMap<String, Animation>();
-	
-	public void CPlayerAnimation(int character){
+public class CPlayerSprite  {	
+	  
+	public CPlayerSprite(String filename) {
+		// TODO Auto-generated constructor stub
+		sprite = Sprite.sprite(filename);
 		
 		Animation ani = null;
+		Animate animate = null;
+		
 		//alter
 		ani = new Animation("alter",interval);
 		ani.addFrame("character_00002000_alert_0_body.png");
 		ani.addFrame("character_00002000_alert_1_body.png");
 		ani.addFrame("character_00002000_alert_2_body.png");
+		animate = Animate.action(ani);
+		body.put("alter",animate);	
+		
+		
+		ani = new Animation("fly",interval);
+		ani.addFrame("character_00002000_fly_0_body.png");
+		ani.addFrame("character_00002000_fly_1_body.png");		
+		animate = Animate.action(ani);
+		body.put("fly",animate);
+		
+	}	
+	
+	public Sprite sprite;
+	private int character;
+	private float interval = 1.0f/2.0f;
+	private String CurrentAction = new String();
+	private HashMap<String, Animate> body = new HashMap<String, Animate>();
+	private HashMap<String, Animate> arm = new HashMap<String, Animate>();
+	private HashMap<String, Animate> armoverhair = new HashMap<String, Animate>();
+	private HashMap<String, Animate> lhand = new HashMap<String, Animate>();
+	private HashMap<String, Animate> rhand = new HashMap<String, Animate>();
+	private HashMap<String, Animate> hand = new HashMap<String, Animate>();
+	
+	public void InitAnimation(String filename){		
+		
+		/*
+		Animation ani = null;
+		//alter
+		ani = new Animation("alter",interval);
+		ani.addFrame("character_00002000_alert_0_body.png");
+		ani.addFrame("character_00002000_alert_1_body.png");
+		ani.addFrame("character_00002000_alert_2_body.png");		
 		body.put("alter", ani);
+		
 		
 		ani = new Animation("alter",interval);
 		ani.addFrame("character_00002000_alert_0_arm.png");
@@ -472,7 +505,19 @@ public class CPlayerAnimation  {
 		ani.addFrame("character_00002000_walk2_2_hand.png");
 		ani.addFrame("character_00002000_walk2_3_hand.png");
 		hand.put("walk2",ani);
+		*/
 	}
 
-	
+	public void SetAction(String action){		
+		
+		if(action.isEmpty() || CurrentAction.equals(action))
+			return;
+		
+		if(!CurrentAction.isEmpty())
+			sprite.stopAction(body.get(CurrentAction));
+				
+		CurrentAction = action;		
+		
+		sprite.runAction(RepeatForever.action(body.get(CurrentAction)));		
+	}
 }
