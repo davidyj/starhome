@@ -2,49 +2,42 @@ package com.example.sample_character;
 
 import java.util.ArrayList;
 
-import org.cocos2d.actions.base.RepeatForever;
-import org.cocos2d.actions.interval.Animate;
 import org.cocos2d.layers.ColorLayer;
-import org.cocos2d.nodes.Animation;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Sprite;
 import org.cocos2d.nodes.Scene;
-import org.cocos2d.layers.Layer;
-import org.cocos2d.nodes.Sprite;
 import org.cocos2d.types.CCColor4B;
-import org.cocos2d.types.CCPoint;
 import org.cocos2d.types.CCSize;
 
-
-import android.content.Context;
+import com.example.nodes.CCharecter;
 
 
 public class CGameLayer extends ColorLayer {
-
-	private CPlayerSprite player;
-	private Animate alter;
-	
 	protected CGameLayer(CCColor4B color) {
 		super(color);
 		
 		// TODO Auto-generated constructor stub		
 		this.setIsTouchEnabled(true);		
 			
-		CCSize winSize = Director.sharedDirector().displaySize();		
-		player = new CPlayerSprite("character_00002000_alert_0_body.png");			
-		player.sprite.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);		
+		CCSize winSize = Director.sharedDirector().displaySize();
+		System.out.print(winSize.toString());
 		
-		addChild(player.sprite);					
+		CCharecter player = CCharecter().create();
 		
-		player.SetAction("fly");
+		player.init();		
+		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);		
 		
-		//Animation player_action_alter = new Animation("alter",1.0f / 2.0f);		
-		//alter = Animate.action(player_action_alter);		
-		//player.runAction(RepeatForever.action(alter));
+		this.addChild(player.sprites);
 		
+		player.SetAction("alter");		
 		
 		this.schedule("gameLogic", 1.0f);
 		this.schedule("update");
+	}
+
+	private CCharecter CCharecter() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	protected ArrayList<Sprite> _targets;
