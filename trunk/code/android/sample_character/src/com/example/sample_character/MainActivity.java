@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 		
 		Director.sharedDirector().setDeviceOrientation(Director.CCDeviceOrientationPortrait);
 		
-		Director.sharedDirector().setDisplayFPS(true);
+		Director.sharedDirector().setDisplayFPS(false);
 		
 		Director.sharedDirector().setAnimationInterval(1.0f / 60.0f);
 		

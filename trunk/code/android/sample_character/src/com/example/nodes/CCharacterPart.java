@@ -36,14 +36,14 @@ public class CCharacterPart extends TextureNode  {
 		return origin;
 	}
 	public void setOrigin(CCPoint origin) {
-		this.origin = CCPoint.ccp(origin.x - this.getTexture().getWidth()/ 2.0f, -(origin.y - this.getTexture().getHeight()/ 2.0f));
+		this.origin = CCPoint.ccp(origin.x, -origin.y);
 	}
 	public CCPoint Neck() {
 		return neck;
 	}
 	public void setNeck(CCPoint neck) {
 		if(neckflag == false){
-			this.neck = CCPoint.ccp(neck.x,-neck.y);
+			this.neck = CCPoint.ccp(neck.x,neck.y);
 			neckflag = true;
 		}
 	}
@@ -52,7 +52,7 @@ public class CCharacterPart extends TextureNode  {
 	}
 	public void setNavel(CCPoint navel) {		
 		if( false == navelflag ){
-			this.navel = CCPoint.ccp( navel.x ,-navel.y );
+			this.navel = CCPoint.ccp( navel.x + origin.x,-navel.y + origin.y);
 			navelflag = true;
 		}
 		
@@ -62,7 +62,7 @@ public class CCharacterPart extends TextureNode  {
 	}
 	public void setHand(CCPoint hand) {		
 		if( false == handflag){
-			this.hand = CCPoint.ccp(hand.x,-hand.y);
+			this.hand = CCPoint.ccp(hand.x,hand.y);
 			handflag = true;
 		}
 	}		
@@ -73,7 +73,7 @@ public class CCharacterPart extends TextureNode  {
 	
 	public void setHandmove(CCPoint handmove){
 		if( false == handmoveflag){
-			this.hand = CCPoint.ccp(handmove.x,-handmove.y);
+			this.handmove = CCPoint.ccp(handmove.x,handmove.y);
 			handmoveflag = true;
 		}	
 	}

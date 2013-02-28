@@ -39,6 +39,7 @@ public class CCharecter  {
 		bodySprite1.setNavel(CCPoint.make(-3.0f,-18.0f));
 		bodySprite1.setZ("body");
 		
+		
 		// 24 * 30
 		CCharacterPart bodySprite2 = CCharacterPart.create("img/character/00002000/alert.1.body.png");
 		bodySprite2.setOrigin(CCPoint.make(16.0f,30.0f));
@@ -59,6 +60,7 @@ public class CCharecter  {
 		armSprite1.setNavel(CCPoint.make(-11.0f,1.0f));
 		armSprite1.setHand(CCPoint.make(-5.0f,5.0f));
 		armSprite1.setZ("armOverHair");
+		//armSprite1.setAnchorPoint(1,0);
 		
 		// 8 * 15
 		CCharacterPart armSprite2 = CCharacterPart.create("img/character/00002000/alert.1.arm.png");
@@ -66,16 +68,18 @@ public class CCharecter  {
 		armSprite2.setNavel(CCPoint.make(-11.0f,1.0f));
 		armSprite2.setHand(CCPoint.make(-6.0f,6.0f));
 		armSprite2.setZ("armOverHair");
+		//armSprite2.setAnchorPoint(1,0);
 		
 		// 7 * 16
 		CCharacterPart armSprite3 = CCharacterPart.create("img/character/00002000/alert.2.arm.png");
 		armSprite3.setOrigin(CCPoint.make(6.0f,10.0f));		
 		armSprite3.setNavel(CCPoint.make(-11.0f,-1.0f));
 		armSprite3.setHand(CCPoint.make(-5.0f,5.0f));
-		armSprite3.setZ("armOverHair");		
+		armSprite3.setZ("armOverHair");
+		//armSprite3.setAnchorPoint(1,0);
 		
-		//hand
-		CCharacterPart lhandSprite1 = CCharacterPart.create("img/character/00002000/alert.0.lHand.png");
+		//hand 8 * 9
+		CCharacterPart lhandSprite1 = CCharacterPart.create("img/character/00002000/alert.0.lhand.png");
 		assert lhandSprite1 != null : "add img/character/00002000/alert.0.lhand.png failed";
 		lhandSprite1.setOrigin(CCPoint.make(15.0f,24.0f));		
 		lhandSprite1.setHandmove(CCPoint.make(-11.0f,-20.0f));		
@@ -125,13 +129,14 @@ public class CCharecter  {
 		//animate
 		CCharacterAnimate animate = CCharacterAnimate.action(animation);		
 		animates.put("alter", animate);		
+		
 	}	
-	
 	
 	public void setPosition(float x,float y){
 		sprites.setPosition(x, y);				
 	}	
 	
+	public static CCPoint gameOrigin = new CCPoint();
 	public CCharacterSprite sprites = CCharacterSprite.create();	
 	private String CurrentAction = new String();
 	private HashMap<String, CCharacterAnimate> animates = new HashMap<String, CCharacterAnimate>();	
@@ -149,7 +154,7 @@ public class CCharecter  {
 		
 		if(animates.get(CurrentAction) !=null ){
 			sprites.runAction(RepeatForever.action(animates.get(CurrentAction)));
-		}
+		}	
 		
 	}	
 	
