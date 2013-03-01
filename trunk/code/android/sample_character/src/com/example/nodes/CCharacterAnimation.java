@@ -11,12 +11,14 @@ public class CCharacterAnimation implements CocosNode.CocosAnimation {
 	private ArrayList<Object> frames= new ArrayList<Object>();
 	private float delay = 5;		
 	
-	public static CCharacterAnimation create(){
-		return new CCharacterAnimation();
-	}
-	public void setName(String name){
+	public CCharacterAnimation(String name) {
+		// TODO Auto-generated constructor stub
 		this.name = name;
 	}
+
+	public static CCharacterAnimation create(String name){
+		return new CCharacterAnimation(name);
+	}	
 	
 	public void setDelay(int delay){
 		this.delay = delay;

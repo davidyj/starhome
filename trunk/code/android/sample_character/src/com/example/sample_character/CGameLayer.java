@@ -1,6 +1,9 @@
 package com.example.sample_character;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.cocos2d.layers.ColorLayer;
 import org.cocos2d.nodes.Director;
@@ -8,13 +11,16 @@ import org.cocos2d.nodes.Sprite;
 import org.cocos2d.nodes.Scene;
 import org.cocos2d.types.CCColor4B;
 import org.cocos2d.types.CCSize;
+import org.xml.sax.SAXException;
 
 import com.example.core.CCore;
 import com.example.nodes.CCharecter;
+import com.example.xml.CCharacterXML;
+import com.example.xml.CCharacterXMLHandler;
 
 
 public class CGameLayer extends ColorLayer {
-	protected CGameLayer(CCColor4B color) {
+	protected CGameLayer(CCColor4B color) throws SAXException, ParserConfigurationException, IOException {
 		super(color);
 		
 		// TODO Auto-generated constructor stub		
@@ -24,16 +30,16 @@ public class CGameLayer extends ColorLayer {
 		CCore.getInstance().GamePoint.x = 0;
 		CCore.getInstance().GamePoint.x = -winSize.height;
 		
-		CCharecter player = CCharecter().create();
+		//CCharecter player = CCharecter().create();
 		
+		CCharecter player = CCharacterXML.getInstance().Read( "xml/Character/00002000.xml");	
 		player.init();	
 		
-		//player.setPosition( CCore.getInstance().GamePoint.x, CCore.getInstance().GamePoint.y);
-		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);	
-		//player.sprites.setAnchorPoint(1.0f,1.0f);		
+		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);
+		
 		this.addChild(player.sprites);		
 		
-		player.SetAction("alter");		
+		player.SetAction("alert");		
 		
 		this.schedule("gameLogic", 1.0f);
 		this.schedule("update");
@@ -48,7 +54,7 @@ public class CGameLayer extends ColorLayer {
 	protected ArrayList<Sprite> _projectiles;
 	protected int _projectilesDestroyed;
 
-	public static Scene scene()
+	public static Scene scene() throws SAXException, ParserConfigurationException, IOException
 	{
 		Scene scene = Scene.node();
 		ColorLayer layer = new CGameLayer(new CCColor4B(255, 255, 255, 255));

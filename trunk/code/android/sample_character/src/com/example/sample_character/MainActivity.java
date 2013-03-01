@@ -1,12 +1,18 @@
 package com.example.sample_character;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.cocos2d.nodes.Scene;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.opengl.CCGLSurfaceView;
+import org.xml.sax.SAXException;
 
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,7 +32,6 @@ public class MainActivity extends Activity {
 		_glSurfaceView = new CCGLSurfaceView(this);
 		
 		setContentView(_glSurfaceView);		
-		
 	}
 
 	@Override
@@ -49,7 +54,17 @@ public class MainActivity extends Activity {
 		
 		Director.sharedDirector().setAnimationInterval(1.0f / 60.0f);
 		
-		Scene scene = CGameLayer.scene();
+		Scene scene = null;
+		try {
+			scene = CGameLayer.scene();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+			Log.i("io error",e.getMessage());
+		}
 		Director.sharedDirector().runWithScene(scene);
 	}
 	

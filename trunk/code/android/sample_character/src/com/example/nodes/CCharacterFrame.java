@@ -12,17 +12,16 @@ import android.graphics.Bitmap;
 
 public class CCharacterFrame {	 
 
-	public static CCharacterFrame create(){
-		return new CCharacterFrame();
+	public CCharacterFrame(String frame) {
+		this.frame = frame;
+	}
+
+	public static CCharacterFrame create(String frame){
+		return new CCharacterFrame(frame);
 	}
 		
-	private CocosNode layer;
-	private String name;
-	private byte frame = 0;
-	public CCharacterSprite sprites = null;
-	
-	public void addSprites(CCharacterSprite sprites){
-		this.sprites = sprites;
-	}
+	private CocosNode layer;	
+	private String frame = null;
+	public CCharacterSprite sprites = CCharacterSprite.create();
 	
 }

@@ -18,22 +18,29 @@ public class CCharacterSprite extends CocosNode {
  
     
 	protected CCharacterSprite() {				
+		
+	}
+	
+	public CCharacterPart body = null;
+	public CCharacterPart arm = null;	
+	public CCharacterPart lhand = null;
+	public CCharacterPart rhand = null;	
+	
+	public void Init(){
+		body = CCharacterPart.create("body","img/character/00002000/alert.0.body.png");
+		arm = CCharacterPart.create("arm","img/character/00002000/alert.0.arm.png");	
+		lhand = CCharacterPart.create("lhand","img/character/00002000/alert.0.lHand.png");
+		rhand = CCharacterPart.create("lhand","img/character/00002000/alert.0.rHand.png");
+		
 		this.addChild(body);	
 		this.addChild(arm);
 		this.addChild(lhand);
+		this.addChild(rhand);
 		
 		body.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 		arm.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 		lhand.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
-	}
-	
-	public CCharacterPart body = CCharacterPart.create("img/character/00002000/alert.0.body.png");
-	public CCharacterPart arm = CCharacterPart.create("img/character/00002000/alert.0.arm.png");	
-	public CCharacterPart lhand = CCharacterPart.create("img/character/00002000/alert.0.lhand.png");
-	
-	@Override
-	public void setPosition(float x,float y){
-		super.setPosition(x, y);	
+		rhand.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 	}
 
 	public void resetPosition(CCharacterSprite sprites){
@@ -55,19 +62,25 @@ public class CCharacterSprite extends CocosNode {
 		
 		if(null != lhand){
 			lhand.setPosition(0  - sprites.lhand.Origin().x , 0 - sprites.lhand.Origin().y);
-		}
+		}				
 		
-				
+		if(null != rhand)
+		{
+			rhand.setPosition(	0 - sprites.body.Origin().x + sprites.body.Navel().x - sprites.rhand.Navel().x  ,
+								0 - sprites.body.Origin().y + sprites.body.Navel().y - sprites.rhand.Navel().y );
+		}
 	}
 	
 	
 	public void addSprite(String name,CCharacterPart sprite){
-		if(name.equals("body"))
+		if("body".equals(name))
 			body = sprite;
-		else if(name.equals("arm"))
+		else if("arm".equals(name))
 			arm = sprite;
-		else if(name.equals("lhand"))
+		else if("lHand".equals(name))
 			lhand = sprite;
+		else if("rHand".equals(name))
+			rhand = sprite;
 	}	
 	
 	
