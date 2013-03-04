@@ -158,8 +158,26 @@ public class CCharecter  {
 		
 		if(animates.get(CurrentAction) !=null ){
 			sprites.runAction(RepeatForever.action(animates.get(CurrentAction)));
-		}	
-		
+		}		
 	}	
+	
+	public void SetExpresion(String expresion){
+		
+		
+	}
+	
+	public CCharacterAnimation getAnimation(String name){		
+		CCharacterAnimate animate = animates.get(name);
+		if(animate != null)
+			return (CCharacterAnimation) animate.getAnimation();
+		return null;
+	}
+	
+	public CCharacterFrame getFrame(String name,String frame){
+		CCharacterAnimation ani = getAnimation(name);
+		if(ani != null)
+			return (CCharacterFrame) ani.getFrame(frame);
+		return null;
+	}
 	
 }

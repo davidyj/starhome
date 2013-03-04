@@ -15,26 +15,54 @@ import android.util.Log;
 
 public class CCharacterPart extends TextureNode  {
 	
-	public static CCharacterPart create() {    	
-        return new CCharacterPart();
-    }
-	
+	public static CCharacterPart create(String path) {    	
+        return new CCharacterPart(path);
+    }	
     public static CCharacterPart create(String name,String filename) {    	
         return new CCharacterPart(name,TextureManager.sharedTextureManager().addImage(filename));
     }    
+    public static CCharacterPart create(CCharacterPart part) {    	
+        return new CCharacterPart(part);
+    }
 	
-    public CCharacterPart() {		
-	}
-    
+    public CCharacterPart(String path) {
+    	this.path = path;
+	}    
 	public CCharacterPart(String name,Texture2D tex) {
-		this.name = name;
+		this.name = name;		
 		setTexture(tex);
 	}
+	public CCharacterPart(CCharacterPart part){		
+		this.name = part.name;
+		this.path = part.path;
+		this.z    = part.getZ();	
+		
+		this.setTexture(part.getTexture());
+		
+		this.origin.x = part.Origin().x;
+		this.origin.y = part.Origin().y;
+		
+		this.neck.x   = part.Neck().x;
+		this.neck.y   = part.Neck().y;
+		
+		this.navel.x  = part.Navel().x;
+		this.navel.y  = part.Navel().y;
+		
+		this.hand.x   = part.Hand().x;
+		this.hand.y   = part.Hand().y;
+		
+		this.handmove.x = part.HandMove().x;
+		this.handmove.y = part.HandMove().y;
+		
+		this.brow.x	  = part.Brow().x;
+		this.brow.y   = part.Brow().y;		
+	}
 	
+	private String path = new String();
 	private String name = new String();
-	private String z;		
-	private CCPoint origin 	= new CCPoint(),neck = new CCPoint(),navel = new CCPoint(),hand = new CCPoint(),handmove = new CCPoint();	
-	private boolean neckflag = false,handflag = false,navelflag = false,handmoveflag = false;
+	private String z = new String();		
+	private CCPoint origin 	= new CCPoint(),neck = new CCPoint(),navel = new CCPoint(),hand = new CCPoint(),handmove = new CCPoint(),brow = new CCPoint();	
+	
 
 	public String name(){
 		return name;
@@ -47,14 +75,16 @@ public class CCharacterPart extends TextureNode  {
 		if("name".equals(key)){
 			this.name = value;
 		}
-		else if("image".equals(key)){
-			String path = "img/character/00002000/".concat(value);
-			Texture2D tex = TextureManager.sharedTextureManager().addImage(path);
+		else if("image".equals(key)){			
+			Texture2D tex = TextureManager.sharedTextureManager().addImage(path.concat(value));
 			if(null == tex){
 				Log.i("character set image error",value);
 				return;
 			}
 			setTexture(tex);
+		}
+		else if("z".equals(key)){
+			this.z = value;
 		}
 		else if("origin_x".equals(key)){
 			origin.x = Integer.parseInt(value);
@@ -86,9 +116,17 @@ public class CCharacterPart extends TextureNode  {
 		else if("handmove_y".equals(key)){
 			handmove.y = -Integer.parseInt(value) + origin.y;
 		}
-		
+		else if("brow_x".equals(key)){
+			brow.x = Integer.parseInt(value) + origin.x;
+		}
+		else if("brow_y".equals(key)){
+			brow.y = -Integer.parseInt(value) + origin.y;
+		}		
 	}
 	
+	public void setName(String name){
+		this.name = name;
+	}
 	public String getZ() {
 		return z;
 	}
@@ -97,55 +135,26 @@ public class CCharacterPart extends TextureNode  {
 	}
 	public CCPoint Origin() {
 		return origin;
-	}
-	public void setOrigin(CCPoint origin) {
-		this.origin = CCPoint.ccp(origin.x, -origin.y);
-	}
+	}	
 	public CCPoint Neck() {
 		return neck;
 	}
-	public void setNeck(CCPoint neck) {
-		if(neckflag == false){
-			this.neck = CCPoint.ccp(neck.x,neck.y);
-			neckflag = true;
-		}
-	}
 	public CCPoint Navel() {
 		return navel;
-	}
-	public void setNavel(CCPoint navel) {		
-		if( false == navelflag ){
-			this.navel = CCPoint.ccp( navel.x + origin.x,-navel.y + origin.y);
-			navelflag = true;
-		}
-		
-	}
+	}	
 	public CCPoint Hand() {
 		return hand;
-	}
-	public void setHand(CCPoint hand) {		
-		if( false == handflag){
-			this.hand = CCPoint.ccp(hand.x,hand.y);
-			handflag = true;
-		}
 	}		
-	
 	public CCPoint HandMove(){
 		return handmove;
 	}
-	
-	public void setHandmove(CCPoint handmove){
-		if( false == handmoveflag){
-			this.handmove = CCPoint.ccp(handmove.x,handmove.y);
-			handmoveflag = true;
-		}	
+	public CCPoint Brow(){
+		return brow;
 	}
 	
     public boolean isFrameDisplayed(Object frame) {
         return getTexture() == (((CCharacterPart)frame).getTexture());
-    }
-	
-	
+    }	
 	 public void setDisplayFrame(Object frame) {
 	        setTexture(((CCharacterPart)frame).getTexture());
 	 }

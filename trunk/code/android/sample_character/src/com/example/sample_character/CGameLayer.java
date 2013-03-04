@@ -3,20 +3,23 @@ package com.example.sample_character;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.microedition.khronos.opengles.GL10;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.cocos2d.layers.ColorLayer;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Sprite;
 import org.cocos2d.nodes.Scene;
+import org.cocos2d.opengl.Primitives;
 import org.cocos2d.types.CCColor4B;
+import org.cocos2d.types.CCPoint;
 import org.cocos2d.types.CCSize;
 import org.xml.sax.SAXException;
 
 import com.example.core.CCore;
 import com.example.nodes.CCharecter;
 import com.example.xml.CCharacterXML;
-import com.example.xml.CCharacterXMLHandler;
+import com.example.xml.CCharacterBodyXMLHandler;
 
 
 public class CGameLayer extends ColorLayer {
@@ -32,12 +35,19 @@ public class CGameLayer extends ColorLayer {
 		
 		//CCharecter player = CCharecter().create();
 		
-		CCharecter player = CCharacterXML.getInstance().Read( "xml/Character/00002000.xml");	
+		CCharacterXML.getInstance().readFace("xml/Character/Face/00020000.xml");
+		
+		CCharecter player = CCharacterXML.getInstance().readBody( "xml/Character/00002000.xml");
+		
+		CCharacterXML.getInstance().readHead(player, "xml/Character/00012000.xml");
+		
 		player.init();	
 		
 		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);
 		
-		this.addChild(player.sprites);		
+		this.addChild(player.sprites);
+		
+		
 		
 		player.SetAction("alert");		
 		
@@ -72,5 +82,17 @@ public class CGameLayer extends ColorLayer {
 	public void update(float dt)
 	{
 	}
+	
+	 @Override
+	 public void draw(GL10 gl) {
+		 super.draw(gl);
+		 
+		  gl.glEnable(GL10.GL_LINE_SMOOTH);
+		  gl.glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
+		  gl.glLineWidth(0.5f);		     
+          Primitives.drawLine(gl, CCPoint.ccp(0,400), CCPoint.ccp(480, 400));
+          Primitives.drawLine(gl, CCPoint.ccp(240,0), CCPoint.ccp(240, 800));
+	 
+	 }
 	
 }

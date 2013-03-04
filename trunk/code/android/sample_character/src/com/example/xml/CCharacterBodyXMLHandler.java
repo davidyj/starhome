@@ -16,7 +16,7 @@ import com.example.nodes.CCharacterSprite;
 import com.example.nodes.CCharecter;
 
 //该类负责解析 xml 数据
-public class CCharacterXMLHandler extends DefaultHandler{
+public class CCharacterBodyXMLHandler extends DefaultHandler{
 	
 		private CCharecter 			character  	= null;		
 		private CCharacterPart		parts		= null;
@@ -71,7 +71,7 @@ public class CCharacterXMLHandler extends DefaultHandler{
 				frames = CCharacterFrame.create(attributes.getValue("name"));								
 			}
 			else if("p".equals(localName)){			
-				parts = CCharacterPart.create();
+				parts = CCharacterPart.create("img/Character/00002000/");
 				for(int i=0;i<attributes.getLength();i++){
 					parts.setValue(attributes.getLocalName(i), attributes.getValue(i));
 				}

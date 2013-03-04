@@ -31,7 +31,11 @@ public class CCharacterAnimation implements CocosNode.CocosAnimation {
 	public ArrayList<Object>  frames(){
 		return frames;
 	}	
-		
+	
+	public Object getFrame(String frame){
+		int index = Integer.parseInt(frame);
+		return frames.get(index);		
+	}		
 	public float delay(){
 		return delay;
 	}

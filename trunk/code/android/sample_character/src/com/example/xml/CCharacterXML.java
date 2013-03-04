@@ -22,8 +22,8 @@ import com.example.nodes.CCharecter;
 
 public class CCharacterXML {
 
-	private static CCharacterXML instance=null;
-	private SAXParser parser = null;
+	private static CCharacterXML instance=null;	 
+	
 	
 	public static synchronized CCharacterXML getInstance(){ 
 		if(instance==null){ 
@@ -32,20 +32,47 @@ public class CCharacterXML {
 			return instance;			
 	} 	
 	
-	public CCharecter Read(String filepath) throws SAXException, ParserConfigurationException, IOException
+	public CCharecter readBody(String filepath) throws SAXException, ParserConfigurationException, IOException
 	{
 	   // 构建SAXParser解析器
-	   parser = SAXParserFactory.newInstance().newSAXParser();
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 	   // 实例化 DefaultHandler对象
-	   CCharacterXMLHandler parseXml = new CCharacterXMLHandler();	   
+	   CCharacterBodyXMLHandler parseXml = new CCharacterBodyXMLHandler();	   
 	   
 	   InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
 	   // 调用parse()方法
 	   if (inputStream != null) {
 	    parser.parse(inputStream, parseXml);
 		
-		return parseXml.character();	
-	   }
+	    return parseXml.character();	    
+	   }	   
 	   return null;	
+	}
+	
+	public void readHead(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterHeadXMLHandler parseXml = new CCharacterHeadXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readFace(String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterFaceXMLHandler parseXml = new CCharacterFaceXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {			
+			parser.parse(inputStream, parseXml);
+		}   	
 	}
 }

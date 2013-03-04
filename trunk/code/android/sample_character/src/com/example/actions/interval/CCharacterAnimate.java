@@ -14,7 +14,7 @@ import com.example.nodes.CCharacterSprite;
 
 public class CCharacterAnimate extends IntervalAction {
 		
-		private CocosNode.CocosAnimation animation;	    
+		private CocosNode.CocosAnimation animation = null;	    
 	    
 	    public static CCharacterAnimate action(CocosNode.CocosAnimation anim) {
 	        assert anim != null : "Animate: argument Animation must be non-null";
@@ -28,11 +28,13 @@ public class CCharacterAnimate extends IntervalAction {
 	    
 	    protected CCharacterAnimate(CocosAnimation anim, boolean restore) {
 	        super(anim.frames().size() * anim.delay());
-
-	        animation = anim;
-	        
-	    }		
-	 
+	        animation = anim;	        
+	    }			    
+	    
+	    public CocosNode.CocosAnimation getAnimation(){
+	    	return animation;
+	    }
+	    
 	    // aTarge is CCharacterSprite
 	    @Override
 	    public void start(CocosNode aTarget) {

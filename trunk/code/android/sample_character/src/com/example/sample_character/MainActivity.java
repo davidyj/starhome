@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
@@ -19,6 +20,7 @@ import android.view.WindowManager;
 
 public class MainActivity extends Activity {
 
+	
 	protected CCGLSurfaceView _glSurfaceView;
 	
 	@Override
@@ -50,10 +52,10 @@ public class MainActivity extends Activity {
 		
 		Director.sharedDirector().setDeviceOrientation(Director.CCDeviceOrientationPortrait);
 		
-		Director.sharedDirector().setDisplayFPS(false);
+		Director.sharedDirector().setDisplayFPS(true);
 		
 		Director.sharedDirector().setAnimationInterval(1.0f / 60.0f);
-		
+						
 		Scene scene = null;
 		try {
 			scene = CGameLayer.scene();
