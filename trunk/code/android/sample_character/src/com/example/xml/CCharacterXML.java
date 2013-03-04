@@ -75,4 +75,19 @@ public class CCharacterXML {
 			parser.parse(inputStream, parseXml);
 		}   	
 	}
+	
+	public void readHair(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterHairXMLHandler parseXml = new CCharacterHairXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
 }

@@ -41,6 +41,8 @@ public class CGameLayer extends ColorLayer {
 		
 		CCharacterXML.getInstance().readHead(player, "xml/Character/00012000.xml");
 		
+		CCharacterXML.getInstance().readHair(player, "xml/Character/Hair/00030000.xml");
+		
 		player.init();	
 		
 		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);

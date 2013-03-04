@@ -27,6 +27,7 @@ public class CCharacterSprite extends CocosNode {
 	public CCharacterPart lhand = null;
 	public CCharacterPart rhand = null;
 	public CCharacterPart head = null;
+	public CCharacterPart hair = null;
 	public CCharacterPart face = null;
 	public CCharacterPart tempFace = null;
 	
@@ -37,6 +38,7 @@ public class CCharacterSprite extends CocosNode {
 		lhand = CCharacterPart.create("lhand","img/Character/00002000/alert.0.lHand.png");
 		rhand = CCharacterPart.create("rhand","img/Character/00002000/alert.0.rHand.png");
 		head = CCharacterPart.create("head","img/Character/00012000/front.head.png");
+		hair = CCharacterPart.create("hair","img/Character/Hair/00030000/default.hairOverHead.png");
 		face = CCharacterPart.create("face","img/Character/Face/00020000/default.face.png");
 		
 		this.addChild(body);	
@@ -44,6 +46,7 @@ public class CCharacterSprite extends CocosNode {
 		this.addChild(lhand);
 		this.addChild(rhand);
 		this.addChild(head);
+		this.addChild(hair);
 		this.addChild(face);
 		
 		body.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
@@ -51,6 +54,7 @@ public class CCharacterSprite extends CocosNode {
 		lhand.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 		rhand.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 		head.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
+		hair.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 		face.setAnchorPoint(CCore.getInstance().ORIGIN_LEFT_TOP.x,CCore.getInstance().ORIGIN_LEFT_TOP.y);
 	}
 
@@ -77,13 +81,17 @@ public class CCharacterSprite extends CocosNode {
 		}
 		if(null != head){			
 			head.setPosition(0 - sprites.body.Origin().x - sprites.head.Neck().x + sprites.body.Neck().x, 
-							 0 - sprites.body.Origin().y - sprites.head.Neck().y + sprites.body.Neck().y);						 
-		
-		}
+							 0 - sprites.body.Origin().y - sprites.head.Neck().y + sprites.body.Neck().y);
+		}		
 		if(null != face){
 			tempFace = CCharacterFace.getInstance().getNext(expresion, tempFace);
 			face.setPosition(0 - sprites.body.Origin().x - sprites.head.Neck().x + sprites.body.Neck().x + sprites.head.Brow().x - tempFace.Brow().x,
 							 0 - sprites.body.Origin().y - sprites.head.Neck().y + sprites.body.Neck().y + sprites.head.Brow().y - tempFace.Brow().y);
+		}
+		if(null != hair)
+		{
+			hair.setPosition(0 - sprites.body.Origin().x - sprites.head.Neck().x + sprites.body.Neck().x + sprites.head.Brow().x - sprites.hair.Brow().x ,
+							 0 - sprites.body.Origin().y - sprites.head.Neck().y + sprites.body.Neck().y + sprites.head.Brow().y - sprites.hair.Brow().y);
 		}
 	}
 	
@@ -99,6 +107,8 @@ public class CCharacterSprite extends CocosNode {
 			rhand = sprite;
 		else if("head".equals(name))
 			head = sprite;	
+		else if("hair".equals(name))
+			hair = sprite;
 		
 	}	
 	
@@ -109,6 +119,7 @@ public class CCharacterSprite extends CocosNode {
 		this.lhand.setDisplayFrame(sprites.lhand);
 		this.rhand.setDisplayFrame(sprites.rhand);
 		this.head.setDisplayFrame(sprites.head);
+		this.hair.setDisplayFrame(sprites.hair);
 		if(tempFace != null)
 			this.face.setDisplayFrame(tempFace);
 	}
