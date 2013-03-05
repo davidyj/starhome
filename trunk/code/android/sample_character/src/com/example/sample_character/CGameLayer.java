@@ -42,6 +42,15 @@ public class CGameLayer extends ColorLayer {
 		CCharacterXML.getInstance().readHead(player, "xml/Character/00012000.xml");
 		
 		CCharacterXML.getInstance().readHair(player, "xml/Character/Hair/00030000.xml");
+		CCharacterXML.getInstance().readCap(player, "xml/Character/Cap/01000000.xml");
+		CCharacterXML.getInstance().readCape(player, "xml/Character/Cape/01102000.xml");
+		CCharacterXML.getInstance().readCoat(player, "xml/Character/Coat/01040000.xml");
+		CCharacterXML.getInstance().readGlove(player, "xml/Character/Glove/01080000.xml");
+		CCharacterXML.getInstance().readPant(player, "xml/Character/Pants/01060000.xml");
+		CCharacterXML.getInstance().readShield(player, "xml/Character/Shield/01092000.xml");
+		CCharacterXML.getInstance().readShoes(player, "xml/Character/Shoes/01070000.xml");
+		CCharacterXML.getInstance().readWeapon(player, "xml/Character/Weapon/01302000.xml");
+		
 		
 		player.init();	
 		

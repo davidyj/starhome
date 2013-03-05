@@ -110,10 +110,10 @@ public class CCharacterPart extends TextureNode  {
 		else if("hand_y".equals(key)){
 			hand.y = -Integer.parseInt(value) + origin.y;
 		}
-		else if("handmove_x".equals(key)){
+		else if("handMove_x".equals(key)){
 			handmove.x = Integer.parseInt(value) + origin.x;
 		}
-		else if("handmove_y".equals(key)){
+		else if("handMove_y".equals(key)){
 			handmove.y = -Integer.parseInt(value) + origin.y;
 		}
 		else if("brow_x".equals(key)){

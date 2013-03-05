@@ -90,4 +90,125 @@ public class CCharacterXML {
 			parser.parse(inputStream, parseXml);
 		}   	
 	}
+	
+	public void readCap(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterCapXMLHandler parseXml = new CCharacterCapXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readCape(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterCapeXMLHandler parseXml = new CCharacterCapeXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readCoat(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterCoatXMLHandler parseXml = new CCharacterCoatXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readGlove(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterGloveXMLHandler parseXml = new CCharacterGloveXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+
+	public void readPant(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterPantXMLHandler parseXml = new CCharacterPantXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readShield(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterShieldXMLHandler parseXml = new CCharacterShieldXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readShoes(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterShoesXMLHandler parseXml = new CCharacterShoesXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
+	
+	public void readWeapon(CCharecter character,String filepath) throws ParserConfigurationException, SAXException, IOException{
+		// 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+		// 实例化 DefaultHandler对象
+		CCharacterWeaponXMLHandler parseXml = new CCharacterWeaponXMLHandler();	   
+	   
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		// 调用parse()方法
+		if (inputStream != null) {	
+			parseXml.setFile(filepath);
+			parseXml.setCharacter(character);
+			parser.parse(inputStream, parseXml);
+		}   	
+	}
 }
