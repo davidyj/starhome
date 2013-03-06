@@ -40,7 +40,7 @@ public class CCharacterHeadXMLHandler extends DefaultHandler {
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		Log.i("endElement",localName);
+		
 		if("s".equals(localName)){
 			if(animation != null)
 				character.addAnimate(animation);			
@@ -63,7 +63,7 @@ public class CCharacterHeadXMLHandler extends DefaultHandler {
 
 	@Override
 	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
-		Log.i("startElement",localName);
+		
 		if ( "s".equals(localName)) {			
 			stag = attributes.getValue("name");
 			anitag = stag;

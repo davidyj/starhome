@@ -38,7 +38,7 @@ public class CCharacterBodyXMLHandler extends DefaultHandler{
 
 		@Override
 		public void endElement(String uri, String localName, String qName) throws SAXException {
-			Log.i("endElement",localName);
+			
 			if("s".equals(localName)){
 				if("info".equals(stag) == false){
 					character.addAnimate(animation);
@@ -60,7 +60,7 @@ public class CCharacterBodyXMLHandler extends DefaultHandler{
 
 		@Override
 		public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
-			Log.i("startElement",localName);
+			
 			if ( "s".equals(localName)) {				
 				if("info".equals(attributes.getValue("name")) != true){
 					animation = CCharacterAnimation.create(attributes.getValue("name"));

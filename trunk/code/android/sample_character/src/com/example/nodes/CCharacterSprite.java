@@ -232,24 +232,58 @@ public class CCharacterSprite extends CocosNode {
 	}		
 	
 	public void setDisplayFrame(CCharacterSprite sprites){
-		this.cape.setDisplayFrame(sprites.cape);
-		this.body.setDisplayFrame(sprites.body);
-		this.arm.setDisplayFrame(sprites.arm);		
-		this.lhand.setDisplayFrame(sprites.lhand);
-		this.rhand.setDisplayFrame(sprites.rhand);
-		this.head.setDisplayFrame(sprites.head);
-		this.hair.setDisplayFrame(sprites.hair);
+		if( null == sprites )
+			return;
+		if(sprites.cape != null)
+			this.cape.setDisplayFrame(sprites.cape);
+		
+		if(sprites.body != null)
+			this.body.setDisplayFrame(sprites.body);
+		
+		if(sprites.arm != null)
+			this.arm.setDisplayFrame(sprites.arm);
+		
+		if(sprites.lhand != null)
+			this.lhand.setDisplayFrame(sprites.lhand);
+		
+		if(sprites.rhand != null)
+			this.rhand.setDisplayFrame(sprites.rhand);
+		
+		if( sprites.head != null)
+			this.head.setDisplayFrame(sprites.head);
+		
+		if(sprites.hair != null)
+			this.hair.setDisplayFrame(sprites.hair);
+		
 		if(tempFace != null)
 			this.face.setDisplayFrame(tempFace);
-		this.cap.setDisplayFrame(sprites.cap);
-		this.mail.setDisplayFrame(sprites.mail);
-		this.mailarm.setDisplayFrame(sprites.mailarm);
-		this.lglove.setDisplayFrame(sprites.lglove);
-		this.rglove.setDisplayFrame(sprites.rglove);
-		this.pant.setDisplayFrame(sprites.pant);
-		this.shield.setDisplayFrame(sprites.shield);
-		this.shoes.setDisplayFrame(sprites.shoes);
-		this.weapon.setDisplayFrame(sprites.weapon);
+		
+		if(sprites.cap != null)
+			this.cap.setDisplayFrame(sprites.cap);
+		
+		if(sprites.mail != null)
+			this.mail.setDisplayFrame(sprites.mail);
+		
+		if(sprites.mailarm != null)
+			this.mailarm.setDisplayFrame(sprites.mailarm);
+		
+		if(sprites.lglove != null )
+			this.lglove.setDisplayFrame(sprites.lglove);
+		
+		if(sprites.rglove != null)
+			this.rglove.setDisplayFrame(sprites.rglove);
+		
+		if(sprites.pant != null)
+			this.pant.setDisplayFrame(sprites.pant);
+		
+		if(sprites.shield != null )
+			this.shield.setDisplayFrame(sprites.shield);
+		
+		if(sprites.shoes != null )
+			this.shoes.setDisplayFrame(sprites.shoes);
+		
+		if(sprites.weapon != null )
+			this.weapon.setDisplayFrame(sprites.weapon);
 	}
 	
 	public void setExpresion(String expresion){

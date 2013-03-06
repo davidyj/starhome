@@ -43,7 +43,7 @@ public class CCharacterHairXMLHandler extends DefaultHandler {
 
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		Log.i("endElement",localName);
+		
 		if("s".equals(localName)){	
 			stag = null;
 		}
