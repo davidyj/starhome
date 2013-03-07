@@ -2712,5 +2712,297 @@ namespace WZextract
 			full_extract_img(img, img.node, Application.StartupPath + "\\extract\\" + img.name + "\\");
 			MessageBox.Show("image extracted");
 		}
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MapTreevieToXML(treeView2);
+        }
+
+        private TreeView thetreeview;
+        private string xmlfilepath;
+        private XmlTextWriter textWriter;
+        private XmlNode Xmlroot;
+        private XmlDocument textdoc =  new XmlDocument();
+        private int MapTreevieToXML(TreeView TheTreeView)
+        {
+            string file = TheTreeView.TopNode.Text;
+            string[] name = file.Split(new char[] {'.'});
+            string end_name = string.Format("map name = \"{0}\"", name[0]);
+            String XMLFilePath = String.Format(".\\extract\\{0}.xml", name[0]);
+
+            //-------初始化转换环境变量
+            thetreeview = TheTreeView;
+            xmlfilepath = XMLFilePath;
+            textWriter = new XmlTextWriter(xmlfilepath, null);
+
+            //-------创建XML写操作对象
+            textWriter.Formatting = Formatting.Indented;
+
+            //-------开始写过程，调用WriteStartDocument方法
+            textWriter.WriteStartDocument();
+
+            //-------写入说明
+            //textWriter.WriteComment("this　XML　is　created　from　a　tree");
+            //textWriter.WriteComment("By　思月行云");
+
+            //-------添加第一个根节点
+            textWriter.WriteStartElement(end_name);
+            textWriter.WriteEndElement();
+
+            //------　写文档结束，调用WriteEndDocument方法
+            textWriter.WriteEndDocument();
+
+            //-----关闭输入流
+            textWriter.Close();
+
+            //-------创建XMLDocument对象
+            textdoc.Load(xmlfilepath);          
+            
+
+            //------选中根节点
+            XmlElement Xmlnode = textdoc.CreateElement(thetreeview.Nodes[0].Text);
+            Xmlroot = textdoc.SelectSingleNode("map");
+
+            //------遍历原treeview控件，并生成相应的XML
+            TransMapTree(thetreeview.Nodes[0].Nodes, (XmlElement)Xmlroot,"map");
+
+            return 0;
+        }
+
+        private int TransTreeSav(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+
+            //-------遍历树的各个故障节点，同时添加节点至XML
+            XmlElement xmlnode;
+            Xmlroot = textdoc.SelectSingleNode("TreeExXMLCls");
+
+            foreach (TreeNode node in nodes)
+            {
+                xmlnode = textdoc.CreateElement(node.Text);
+                ParXmlnode.AppendChild(xmlnode);
+
+                if (node.Nodes.Count > 0)
+                {
+                    TransTreeSav(node.Nodes, xmlnode);
+                }
+            }
+            textdoc.Save(xmlfilepath);
+
+            return 0;
+        }
+        
+        private int TransMapBase(TreeNodeCollection nodes, XmlElement ParXmlnode){
+            int index = 0;
+            foreach (TreeNode node in nodes)
+            {
+                XmlElement xmlnode = textdoc.CreateElement("i");
+                ParXmlnode.AppendChild(xmlnode);
+                xmlnode.SetAttribute("name", index.ToString());                
+                foreach (TreeNode node1 in node.Nodes)
+                {   
+                    xmlnode.SetAttribute(node1.Text,node1.Tag.ToString());
+                }
+                index++;
+            }
+            return 0;
+        }
+
+        private int TransMapLayer(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+            //info
+            if(null != nodes[0].Tag)
+                ParXmlnode.SetAttribute(nodes[0].Text, nodes[0].Tag.ToString());
+
+            //tile
+            XmlElement tileXmlNode = textdoc.CreateElement("tile");
+            ParXmlnode.AppendChild(tileXmlNode);
+            tileXmlNode.SetAttribute("name", nodes[1].Text);
+            int tile_index1 = 0;
+            foreach (TreeNode tile_node in nodes[1].Nodes)
+            {
+                XmlElement node = textdoc.CreateElement("t");
+                tileXmlNode.AppendChild(node);
+                node.SetAttribute("name",tile_index1.ToString());                
+                foreach (TreeNode node1 in tile_node.Nodes)
+                {              
+                    node.SetAttribute(node1.Text, node1.Tag.ToString());                
+                }
+                tile_index1++;
+            }
+
+            //obj
+            XmlElement objXmlNode = textdoc.CreateElement("obj");
+            ParXmlnode.AppendChild(objXmlNode);
+            objXmlNode.SetAttribute("name", nodes[2].Text);
+            int obj_index1 = 0;
+            foreach (TreeNode obj_node in nodes[2].Nodes)
+            {
+                XmlElement node = textdoc.CreateElement("o");
+                objXmlNode.AppendChild(node);
+                node.SetAttribute("name",obj_index1.ToString());                
+                foreach (TreeNode node1 in obj_node.Nodes)
+                {   
+                    node.SetAttribute(node1.Text, node1.Tag.ToString());
+                }
+                obj_index1++;
+            }
+
+            return 0;
+        }
+        private int TransMapFoothold(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                XmlElement element1 = textdoc.CreateElement("i");
+                ParXmlnode.AppendChild(element1);
+                element1.SetAttribute("name", node.Text);
+                foreach (TreeNode node1 in node.Nodes)
+                {
+                    XmlElement element2 = textdoc.CreateElement("i");
+                    element1.AppendChild(element2);
+                    element2.SetAttribute("name", node1.Text);
+                    foreach (TreeNode node2 in node1.Nodes)
+                    {
+                        XmlElement element3 = textdoc.CreateElement("i");
+                        element2.AppendChild(element3);
+                        element3.SetAttribute("name", node2.Text);
+                        foreach (TreeNode node3 in node2.Nodes)
+                        {
+                            element3.SetAttribute(node3.Text, node3.Tag.ToString());
+                        }
+                    }
+                }
+            }
+            return 0;
+        }
+        private int TransMapPortal(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+            int index = 0;
+            foreach (TreeNode node in nodes)
+            {
+                XmlElement element1 = textdoc.CreateElement("p");
+                ParXmlnode.AppendChild(element1);
+                element1.SetAttribute("name", index.ToString());
+                foreach (TreeNode node1 in node.Nodes)
+                {     
+                    element1.SetAttribute(node1.Text, node1.Tag.ToString());
+                }
+                index++;
+            }
+            return 0;
+        }
+
+        private int TransMapLadderRope(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+            int index = 0;
+            foreach (TreeNode node in nodes)
+            {
+                XmlElement element1 = textdoc.CreateElement("l");
+                ParXmlnode.AppendChild(element1);
+                element1.SetAttribute("name", index.ToString());
+                foreach (TreeNode node1 in node.Nodes)
+                {
+                    element1.SetAttribute(node1.Text, node1.Tag.ToString());
+                }
+                index++;
+            }
+            return 0;
+        }
+
+        private int TransMap1(TreeNodeCollection nodes, XmlElement ParXmlnode)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                ParXmlnode.SetAttribute(node.Text, node.Tag.ToString());                
+            }
+            return 0;
+        }
+
+        private int TransMapTree(TreeNodeCollection nodes, XmlElement ParXmlnode,String name)
+        {
+            XmlElement xmlnode;
+            //-------遍历树的各个故障节点，同时添加节点至XML            
+            Xmlroot = textdoc.SelectSingleNode(name);            
+            foreach (TreeNode node in nodes)
+            {        
+               if("info".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement("i");
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    foreach(TreeNode node1 in node.Nodes)
+                        xmlnode.SetAttribute(node1.Text, node1.Tag.ToString());
+                    continue;
+                }
+                else if ("back".Equals(node.Text)){
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapBase(node.Nodes, xmlnode);
+                    continue;
+                }
+                else if ("life".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapBase(node.Nodes, xmlnode);
+                    continue;
+                }
+                else if ("reactor".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapBase(node.Nodes, xmlnode);
+                    continue;
+                }                
+                else if ("0".Equals(node.Text) || "1".Equals(node.Text) || "2".Equals(node.Text) || "3".Equals(node.Text) || "4".Equals(node.Text) || "5".Equals(node.Text) || "6".Equals(node.Text) || "7".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement("layer");
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapLayer(node.Nodes, xmlnode);
+                    continue;
+                }                
+                else if ("foothold".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapFoothold(node.Nodes, xmlnode);
+                    continue;
+                }
+                else if ("ladderRope".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapLadderRope(node.Nodes, xmlnode);
+                    continue;
+                }
+                else if ("miniMap".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement(node.Text);
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMap1(node.Nodes, xmlnode);
+                    continue;                    
+                }
+                else if ("portal".Equals(node.Text))
+                {
+                    xmlnode = textdoc.CreateElement("p");
+                    ParXmlnode.AppendChild(xmlnode);
+                    xmlnode.SetAttribute("name", node.Text);
+                    TransMapPortal(node.Nodes, xmlnode);
+                    continue;
+                }
+               continue;
+            }
+            textdoc.Save(xmlfilepath);
+
+            return 0;
+        }
+
 	}
 }
