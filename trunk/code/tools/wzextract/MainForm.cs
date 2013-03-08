@@ -2713,6 +2713,7 @@ namespace WZextract
 			MessageBox.Show("image extracted");
 		}
 
+        //exprot map xml
         private void button7_Click(object sender, EventArgs e)
         {
             MapTreevieToXML(treeView2);
@@ -2927,7 +2928,7 @@ namespace WZextract
             {        
                if("info".Equals(node.Text))
                 {
-                    xmlnode = textdoc.CreateElement("i");
+                    xmlnode = textdoc.CreateElement("info");
                     ParXmlnode.AppendChild(xmlnode);
                     xmlnode.SetAttribute("name", node.Text);
                     foreach(TreeNode node1 in node.Nodes)
@@ -3001,6 +3002,183 @@ namespace WZextract
             }
             textdoc.Save(xmlfilepath);
 
+            return 0;
+        }
+
+        //export obj xml
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ObjTreevieToXML (treeView2);
+        }
+
+        private int ObjTreevieToXML(TreeView TheTreeView)
+        {
+            string file = TheTreeView.TopNode.Text;
+            string[] name = file.Split(new char[] { '.' });
+            string end_name = string.Format("map name = \"{0}\"", name[0]);
+            String XMLFilePath = String.Format(".\\extract\\Map\\Obj\\{0}.xml", name[0]);
+
+            //-------初始化转换环境变量
+            thetreeview = TheTreeView;
+            xmlfilepath = XMLFilePath;
+            textWriter = new XmlTextWriter(xmlfilepath, null);
+
+            //-------创建XML写操作对象
+            textWriter.Formatting = Formatting.Indented;
+
+            //-------开始写过程，调用WriteStartDocument方法
+            textWriter.WriteStartDocument();
+
+            //-------写入说明
+            //textWriter.WriteComment("this　XML　is　created　from　a　tree");
+            //textWriter.WriteComment("By　思月行云");
+
+            //-------添加第一个根节点
+            textWriter.WriteStartElement(end_name);
+            textWriter.WriteEndElement();
+
+            //------　写文档结束，调用WriteEndDocument方法
+            textWriter.WriteEndDocument();
+
+            //-----关闭输入流
+            textWriter.Close();
+
+            //-------创建XMLDocument对象
+            textdoc.Load(xmlfilepath);
+
+
+            //------选中根节点
+            XmlElement Xmlnode = textdoc.CreateElement(thetreeview.Nodes[0].Text);
+            Xmlroot = textdoc.SelectSingleNode("map");
+
+            //------遍历原treeview控件，并生成相应的XML
+            TransTileTree(thetreeview.Nodes[0].Nodes, (XmlElement)Xmlroot);
+
+            return 0;
+        }
+
+        private String l1, l2, l3, l4;
+        private int TransTileTree(TreeNodeCollection nodes, XmlElement xmlroot)
+        {            
+            foreach (TreeNode node1 in nodes)
+            {
+                l1 = node1.Text;
+                foreach (TreeNode node2 in node1.Nodes)
+                {
+                    l2 = node2.Text;
+
+                    XmlElement xmlnode1 = textdoc.CreateElement("i");
+                    
+                    foreach (TreeNode node3 in node2.Nodes)
+                    {                        
+                        if ("origin".Equals(node3.Text))
+                        {
+                            xmlroot.AppendChild(xmlnode1);
+
+                            vector v = node3.Tag as vector;
+                            xmlnode1.SetAttribute("origin_x", v.x.ToString());
+                            xmlnode1.SetAttribute("origin_y", v.y.ToString());
+                            xmlnode1.SetAttribute("img", string.Format("{0}.{1}.png", l1, l2));
+                        }
+                        else if ("z".Equals(node3.Text))
+                        {
+                            xmlnode1.SetAttribute("origin_z", node3.Tag.ToString());
+                        }
+                        else if ("delay".Equals(node3.Text))
+                        {
+                            xmlnode1.SetAttribute("delay", node3.Tag.ToString());
+                        }
+                        else if ("foothold".Equals(node3.Text))
+                        {
+                            if (node3.Tag == null)
+                            {
+                            }
+                            else
+                            {
+                                xmlnode1.SetAttribute("foothold_x", (node3.Tag as vector).x.ToString());
+                                xmlnode1.SetAttribute("foothold_y", (node3.Tag as vector).y.ToString());
+                            }  
+                        }
+                        else
+                        {
+                            l3 = node3.Text;
+                            XmlElement xmlnode2 = textdoc.CreateElement("i");
+                            
+                            foreach (TreeNode node4 in node3.Nodes)
+                            {                                
+                                if ("origin".Equals(node4.Text))
+                                {
+                                    xmlroot.AppendChild(xmlnode2);
+
+                                    vector v = node4.Tag as vector;
+                                    xmlnode2.SetAttribute("origin_x", v.x.ToString());
+                                    xmlnode2.SetAttribute("origin_y", v.y.ToString());
+                                    xmlnode2.SetAttribute("img", string.Format("{0}.{1}.{2}.png", l1, l2, l3));
+                                }
+                                else if ("z".Equals(node4.Text))
+                                {
+                                    xmlnode2.SetAttribute("origin_z", node4.Tag.ToString());
+                                }
+                                else if ("delay".Equals(node4.Text))
+                                {
+                                    xmlnode2.SetAttribute("delay", node4.Tag.ToString());
+                                }
+                                else if ("foothold".Equals(node4.Text))
+                                {
+                                    if (node4.Tag == null)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        xmlnode2.SetAttribute("foothold_x", (node4.Tag as vector).x.ToString());
+                                        xmlnode2.SetAttribute("foothold_y", (node4.Tag as vector).y.ToString());
+                                    }  
+                                }
+                                else
+                                {
+                                    l4 = node4.Text;
+
+                                    XmlElement xmlnode3 = textdoc.CreateElement("i");                                    
+                                    foreach (TreeNode node5 in node4.Nodes)
+                                    {                                        
+                                        if ("origin".Equals(node5.Text))
+                                        {
+                                            xmlroot.AppendChild(xmlnode3);
+                                            vector v = node5.Tag as vector;
+                                            xmlnode3.SetAttribute("origin_x", v.x.ToString());
+                                            xmlnode3.SetAttribute("origin_y", v.y.ToString());
+                                            xmlnode3.SetAttribute("img", string.Format("{0}.{1}.{2}.{3}.png", l1, l2, l3, l4));
+                                        }
+                                        else if ("z".Equals(node5.Text))
+                                        {
+                                            xmlnode3.SetAttribute("origin_z", node5.Tag.ToString());
+                                        }
+                                        else if ("delay".Equals(node5.Text))
+                                        {
+                                            xmlnode3.SetAttribute("delay", node5.Tag.ToString());
+                                        }
+                                        else if ("foothold".Equals(node5.Text))
+                                        {
+                                            if (node5.Tag == null)
+                                            {
+                                            }
+                                            else
+                                            {
+                                                xmlnode3.SetAttribute("foothold_x", (node5.Tag as vector).x.ToString());
+                                                xmlnode3.SetAttribute("foothold_y", (node5.Tag as vector).y.ToString());
+                                            }
+                                        }
+                                    }                                   
+
+                                }
+                            }
+
+                        }
+                    }
+                }                
+            }
+            textdoc.Save(xmlfilepath);
+             
             return 0;
         }
 

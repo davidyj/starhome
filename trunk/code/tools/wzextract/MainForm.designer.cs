@@ -92,6 +92,7 @@
             this.extractBar = new System.Windows.Forms.ProgressBar();
             this.extractCancel = new System.Windows.Forms.Button();
             this.extractStart = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlSound.SuspendLayout();
@@ -282,7 +283,7 @@
             this.treeView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(164, 205);
+            this.treeView1.Size = new System.Drawing.Size(164, 224);
             this.treeView1.TabIndex = 2;
             this.treeView1.Tag = "";
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1AfterSelect);
@@ -292,6 +293,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.button8);
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.pnlSound);
@@ -312,7 +314,7 @@
             this.groupBox2.Controls.Add(this.textBox8);
             this.groupBox2.Location = new System.Drawing.Point(2, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(657, 434);
+            this.groupBox2.Size = new System.Drawing.Size(657, 474);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
@@ -323,7 +325,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(52, 23);
             this.button7.TabIndex = 25;
-            this.button7.Text = "to xml";
+            this.button7.Text = "map";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -451,7 +453,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(6, 194);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(590, 113);
+            this.label1.Size = new System.Drawing.Size(590, 153);
             this.label1.TabIndex = 5;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -591,7 +593,7 @@
             this.pnlPicture.Controls.Add(this.pictureBox1);
             this.pnlPicture.Location = new System.Drawing.Point(67, 42);
             this.pnlPicture.Name = "pnlPicture";
-            this.pnlPicture.Size = new System.Drawing.Size(584, 387);
+            this.pnlPicture.Size = new System.Drawing.Size(584, 427);
             this.pnlPicture.TabIndex = 17;
             this.pnlPicture.Visible = false;
             // 
@@ -632,7 +634,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox8.Size = new System.Drawing.Size(584, 387);
+            this.textBox8.Size = new System.Drawing.Size(584, 427);
             this.textBox8.TabIndex = 2;
             this.textBox8.Visible = false;
             // 
@@ -770,7 +772,7 @@
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 463);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 503);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(846, 22);
             this.statusStrip1.TabIndex = 4;
@@ -817,7 +819,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(846, 437);
+            this.splitContainer1.Size = new System.Drawing.Size(846, 477);
             this.splitContainer1.SplitterDistance = 171;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -839,8 +841,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.label2);
             this.splitContainer2.Panel2.Controls.Add(this.treeView2);
-            this.splitContainer2.Size = new System.Drawing.Size(164, 426);
-            this.splitContainer2.SplitterDistance = 208;
+            this.splitContainer2.Size = new System.Drawing.Size(164, 466);
+            this.splitContainer2.SplitterDistance = 227;
             this.splitContainer2.TabIndex = 4;
             // 
             // label2
@@ -859,7 +861,7 @@
             this.treeView2.HideSelection = false;
             this.treeView2.Location = new System.Drawing.Point(0, 18);
             this.treeView2.Name = "treeView2";
-            this.treeView2.Size = new System.Drawing.Size(164, 193);
+            this.treeView2.Size = new System.Drawing.Size(164, 214);
             this.treeView2.TabIndex = 3;
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView2AfterSelect);
             // 
@@ -924,11 +926,21 @@
             this.extractStart.UseVisualStyleBackColor = true;
             this.extractStart.Click += new System.EventHandler(this.ExtractStartClick);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(9, 435);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(52, 23);
+            this.button8.TabIndex = 26;
+            this.button8.Text = "obj";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 485);
+            this.ClientSize = new System.Drawing.Size(846, 525);
             this.Controls.Add(this.fullExtractPanel);
             this.Controls.Add(this.renderContainer);
             this.Controls.Add(this.splitContainer1);
@@ -1040,5 +1052,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuCloseRender;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
 	}
 }
