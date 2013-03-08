@@ -1,5 +1,9 @@
 package com.example.sample_map.xml;
 
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -32,7 +36,15 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 			map.addTile(Integer.valueOf(layerindex), tile);
 		}
 		else if("o".equals(localName)){			
-			map.addObj(Integer.valueOf(layerindex), obj);
+			try {
+				map.addObj(Integer.valueOf(layerindex), obj);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			} catch (ParserConfigurationException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}			
 	}
 
@@ -43,8 +55,11 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 
 	@Override
 	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {		
-		if ( "i".equals(localName)) {			
-			
+		if ( "info".equals(localName)) {			
+			for(int i=0;i<attributes.getLength();i++){
+				map.setValue(attributes.getLocalName(i), attributes.getValue(i));
+			}
+			map.setValueEnd();
 		}	
 		else if("o".equals(localName)){
 			// load obj
