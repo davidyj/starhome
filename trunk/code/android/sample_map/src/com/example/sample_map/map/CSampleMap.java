@@ -39,8 +39,8 @@ public class CSampleMap extends ColorLayer{
 	private CSampleMapObj currentObj = null;
 	private int map_top = 0,map_bottom = 0,map_left = 0,map_right = 0,map_width=0,map_height = 0,map_centerX = 0,map_centerY = 0;
 	
-	public void addObj(int layerid,CSampleMapObj obj) throws SAXException, ParserConfigurationException, IOException{		
-		CSampleMapLayer layer = layers.get(layerid);
+	public void addObj(CSampleMapObj obj) throws SAXException, ParserConfigurationException, IOException{		
+		CSampleMapLayer layer = layers.get((int) obj.position.z);
 		if(layer != null){			
 			layer.addObj(obj);		
 			
@@ -59,12 +59,13 @@ public class CSampleMap extends ColorLayer{
 			
 			if(obj.f == 0){
 				obj.setPosition(obj.position.x + map_centerX - currentObj.origin.x,
-								obj.position.y + map_centerY - currentObj.origin.y);
+								obj.position.y - map_centerY + currentObj.origin.y);
 			}
 			else{
-				
+				obj.setPosition(obj.position.x + map_centerX - obj.getWidth(),
+						obj.position.y - map_centerY + currentObj.origin.y);
 			}
-			this.addChild(obj);
+			//this.addChild(obj);
 		}
 	}
 	
@@ -104,4 +105,16 @@ public class CSampleMap extends ColorLayer{
 		//this.setPosition(this.getPositionX() + 0.01f, this.getPositionY() + 0.01f);
 	}
 	
+	public void move(float x ,float y){
+		this.setPosition(this.getPositionX() - x, this.getPositionY() + y);		
+	}
+	
+	
+	public void init(){
+		for(CSampleMapLayer layer:layers){
+			for(CSampleMapObj obj : layer.objs()){
+				this.addChild(obj);
+			}
+		}
+	}
 }

@@ -37,7 +37,7 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("o".equals(localName)){			
 			try {
-				map.addObj(Integer.valueOf(layerindex), obj);
+				map.addObj(obj);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			} catch (ParserConfigurationException e) {

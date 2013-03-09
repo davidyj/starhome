@@ -3,6 +3,8 @@ package com.example.sample_map;
 import org.cocos2d.nodes.Director;
 import org.cocos2d.opengl.CCGLSurfaceView;
 
+import com.example.sample_map.map.CSampleMap;
+
 import android.content.Context;
 import android.view.MotionEvent;
 
@@ -28,6 +30,8 @@ public class CSampleMapView extends CCGLSurfaceView {
           case MotionEvent.ACTION_DOWN:        	 
         	  float x = event.getX();
         	  float y = event.getY();
+        	  
+        	  map.move(x - 512, y - 400);
               break;
           case MotionEvent.ACTION_MOVE:              
               break;
@@ -36,5 +40,10 @@ public class CSampleMapView extends CCGLSurfaceView {
 	    }		  
 		return super.onTouchEvent(event);	       
     }
+	
+	private CSampleMap map = null;
+	public void setMap(CSampleMap map){
+		this.map = map;
+	}
 
 }

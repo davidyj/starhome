@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 		
 		Scene scene = null;
 		try {
-			scene = CGameLayer.scene();
+			scene = CGameLayer.scene(_glSurfaceView);
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
@@ -65,7 +65,8 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 			Log.i("io error",e.getMessage());
 		}
-		Director.sharedDirector().runWithScene(scene);		
+		Director.sharedDirector().runWithScene(scene);	
+		
 	}
 	
 	@Override
