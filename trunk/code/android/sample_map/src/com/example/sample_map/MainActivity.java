@@ -6,6 +6,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.cocos2d.nodes.Director;
 import org.cocos2d.nodes.Scene;
+import org.cocos2d.opengl.CCGLSurfaceView;
 import org.xml.sax.SAXException;
 
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import android.view.WindowManager;
 
 public class MainActivity extends Activity {
 
-	protected CSampleMapView _glSurfaceView;
+	protected CCGLSurfaceView _glSurfaceView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
-		_glSurfaceView = new CSampleMapView(this);
+		_glSurfaceView = new CCGLSurfaceView(this);
 		
 		setContentView(_glSurfaceView);
 		
@@ -56,7 +57,7 @@ public class MainActivity extends Activity {
 		
 		Scene scene = null;
 		try {
-			scene = CGameLayer.scene(_glSurfaceView);
+			scene = CGameLayer.scene();
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {

@@ -20,14 +20,15 @@ public class CGameLayer extends ColorLayer {
 		
 	}
 	
-	public static Scene scene(CSampleMapView view) throws SAXException, ParserConfigurationException, IOException
+	public static Scene scene() throws SAXException, ParserConfigurationException, IOException
 	{
 		Scene scene = Scene.node();
 		CSampleMap map = CSampleMapXml.getInstance().read("xml/000000001.xml");
+		
 		//map.setPosition(-2848.0f,-5.0f);
 		map.init();
-		scene.addChild(map);
-		view.setMap(map);
+		
+		scene.addChild(map);		
 		
 		return scene;
 	}	

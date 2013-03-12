@@ -38,6 +38,7 @@ public class CSampleMapObj extends TextureNode{
 			l2 = value;			
 			path = String.format("img/Map/Obj/%s.img/%s.%s.%s.0.png",os,l0,l1,l2);			
 			img = String.format("%s.%s.%s.0.png", l0,l1,l2);
+			Log.i("load img",path);
 			Texture2D t = TextureManager.sharedTextureManager().addImage(path); 
 			setTexture(t);			
 		}
