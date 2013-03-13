@@ -7,18 +7,29 @@ public class CSampleMapLayer {
 		return new CSampleMapLayer();
 	}
 	
+	private String ts = null;
 	private ArrayList<CSampleMapObj> objs = new ArrayList<CSampleMapObj>();
-	private ArrayList<CSampleMapTile> tilelist = new ArrayList<CSampleMapTile>();
+	private ArrayList<CSampleMapTile> tiles = new ArrayList<CSampleMapTile>();
 	
 	public void addObj(CSampleMapObj obj){
 		objs.add(obj);
 	}
 	
 	public void addTile(CSampleMapTile tile){
-		tilelist.add(tile);
+		tiles.add(tile);
 	}
 	
-	ArrayList<CSampleMapObj> objs(){
+	public ArrayList<CSampleMapObj> objs(){
 		return objs;
+	}
+	
+	public ArrayList<CSampleMapTile> tiles(){
+		return tiles;
+	}
+	
+	public void setValue(String key,String value){
+		if("tS".equals(key)){
+			ts = value;
+		}
 	}
 }

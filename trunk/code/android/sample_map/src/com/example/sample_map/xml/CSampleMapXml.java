@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
 
 import com.example.sample_map.map.CSampleMap;
 import com.example.sample_map.map.CSampleMapObj;
+import com.example.sample_map.map.CSampleMapTile;
 
 public class CSampleMapXml {
 	private static CSampleMapXml instance=null;	 	
@@ -49,6 +50,23 @@ public class CSampleMapXml {
 		CSampleMapObjHandler parseXml = new CSampleMapObjHandler();	   
 		
 		parseXml.setHashMap(objs);
+		
+		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+		
+	   // 调用parse()方法
+		if (inputStream != null) {			
+			parser.parse(inputStream, parseXml);		
+		}   		
+	}
+	
+	public void readTile(HashMap<String,CSampleMapTile> tiles,String filepath,String ts) throws SAXException, ParserConfigurationException, IOException
+	{
+	   // 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+	   // 实例化 DefaultHandler对象
+		CSampleMapTileHandler parseXml = new CSampleMapTileHandler();	   
+		
+		parseXml.setHashMap(tiles,ts);
 		
 		InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
 		

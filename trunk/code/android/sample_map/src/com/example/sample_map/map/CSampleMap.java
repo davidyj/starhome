@@ -31,6 +31,7 @@ import org.cocos2d.types.CCMacros;
 import org.cocos2d.types.CCPoint;
 import org.cocos2d.types.CCRect;
 import org.cocos2d.types.CCSize;
+import org.cocos2d.types.CCVertex3D;
 import org.jbox2d.collision.AABB;
 import org.jbox2d.collision.shapes.EdgeChainDef;
 import org.jbox2d.collision.shapes.PolygonDef;
@@ -67,14 +68,14 @@ public class CSampleMap extends ColorLayer{
 	
 	public CSampleMap(CCColor4B color){
 		super(color);
+		CCore.getInstance();
 		this.addChild(baseScene);
 		
-		baseScene.setPosition(-40, -170); 
+		baseScene.setPosition(100.0f, 1492.0f); 
 		baseScene.setAnchorPoint(CCore.ORIGIN_LEFT_BOTTOM.x, CCore.ORIGIN_LEFT_BOTTOM.y);
 		
 		this.isTouchEnabled_ = true;
-     	this.isAccelerometerEnabled_ = true;
-     	
+     	this.isAccelerometerEnabled_ = true;    	
 		
      	CCSize s = Director.sharedDirector().winSize();
         float scaledWidth = s.width/PTM_RATIO;
@@ -104,7 +105,7 @@ public class CSampleMap extends ColorLayer{
         mgr.setAnchorPoint(CCore.ORIGIN_LEFT_BOTTOM.x, CCore.ORIGIN_LEFT_BOTTOM.y);
         
         //add layer
-		for(int i = 0;i<7;i++)
+		for(int i = 0;i<8;i++)
 		{
 			CSampleMapLayer layer = CSampleMapLayer.create();
 			layers.add(layer);
@@ -116,12 +117,11 @@ public class CSampleMap extends ColorLayer{
 		
 	}
 	
-	private BBWorld world;
-    private GLESDebugDraw m_debugDraw;
-    
 	private ArrayList<CSampleMapLayer> layers = new ArrayList<CSampleMapLayer>();	
 	private HashMap<String,CSampleMapObj> objs = new HashMap<String,CSampleMapObj>();
+	private HashMap<String,CSampleMapTile> tiles = new HashMap<String,CSampleMapTile>();
 	private CSampleMapObj currentObj = null;
+	private CSampleMapTile currentTile = null;
 	private int map_top = 0,map_bottom = 0,map_left = 0,map_right = 0,map_width=0,map_height = 0,map_centerX = 0,map_centerY = 0;
 	
 	public void addObj(CSampleMapObj obj) throws SAXException, ParserConfigurationException, IOException{		
@@ -129,9 +129,7 @@ public class CSampleMap extends ColorLayer{
 		if(layer != null){			
 			layer.addObj(obj);		
 			
-			CCore.getInstance();
-			CCore.getInstance();
-			obj.setAnchorPoint(CCore.ORIGIN_LEFT_BOTTOM.x, CCore.ORIGIN_LEFT_BOTTOM.y);
+			obj.setAnchorPoint(CCore.ORIGIN_LEFT_TOP.x, CCore.ORIGIN_LEFT_TOP.y);
 			
 			currentObj = objs.get(obj.img);
 			if(currentObj == null){
@@ -145,8 +143,7 @@ public class CSampleMap extends ColorLayer{
 			}
 			
 			if(obj.f == 0){
-				obj.setPosition(obj.position.x + map_centerX - currentObj.origin.x,
-								obj.position.y - map_centerY + currentObj.origin.y);
+				obj.setPosition(obj.position.x + map_centerX - currentObj.origin.x,-(obj.position.y + map_centerY - currentObj.origin.y));
 			}
 			else{
 				obj.setPosition(obj.position.x + map_centerX - obj.getWidth(),
@@ -155,11 +152,36 @@ public class CSampleMap extends ColorLayer{
 		}
 	}
 	
-	public void addTile(int layerid,CSampleMapTile tile){
+	public CSampleMapLayer getLayer(int index){
+		return layers.get(index);
+	}
+	
+	public void addTile(int layerid,CSampleMapTile tile) throws SAXException, ParserConfigurationException, IOException{
 		CSampleMapLayer layer = layers.get(layerid);
 		if(layer != null){
 			layer.addTile(tile);
-			baseScene.addChild(tile); 
+			
+			tile.setAnchorPoint(CCore.ORIGIN_LEFT_TOP.x, CCore.ORIGIN_LEFT_TOP.y);
+			
+			currentTile = tiles.get(tile.path);
+			if(currentTile == null){
+				String path = String.format("xml/Map/Tile/%s.xml",tile.ts);
+				CSampleMapXml.getInstance().readTile(tiles, path,tile.ts);
+			}
+			currentTile = tiles.get(tile.path);
+			if(currentTile == null){
+				Log.i("error tile obj",tile.path);
+				return;
+			}
+			
+			if(tile.f == 0){
+				tile.setPosition(tile.position.x + map_centerX - currentTile.origin.x,-(tile.position.y + map_centerY - currentTile.origin.y));				
+			}
+			else{
+				tile.setPosition(tile.position.x + map_centerX - tile.getWidth(),
+						tile.position.y - map_centerY + currentTile.origin.y);
+			}	
+			 
 		}
 	}
 	
@@ -171,10 +193,24 @@ public class CSampleMap extends ColorLayer{
 			map_left = Integer.valueOf(value);
 		}
 		else if("VRBottom".equals(key)){
-			map_bottom = -Integer.valueOf(value);
+			map_bottom = Integer.valueOf(value);
 		}
 		else if("VRRight".equals(key)){
 			map_right = Integer.valueOf(value);
+		}
+		else if("width".equals(key)){
+			map_width = Integer.valueOf(value);
+		}
+		else if("height".equals(key)){
+			map_height = Integer.valueOf(value);
+			this.setContentSize(map_width, map_height);
+			baseScene.setContentSize(map_width, map_height);
+		}
+		else if("centerX".equals(key)){
+			map_centerX = Integer.valueOf(value);
+		}
+		else if("centerY".equals(key)){
+			map_centerY = Integer.valueOf(value);
 		}
 	}
 	
@@ -198,8 +234,14 @@ public class CSampleMap extends ColorLayer{
 		for(CSampleMapLayer layer:layers){
 			for(CSampleMapObj obj : layer.objs()){
 				baseScene.addChild(obj);		
-			}
+			}					
 		}
+		
+		for(CSampleMapLayer layer:layers){
+			for(CSampleMapTile tile : layer.tiles()){
+				baseScene.addChild(tile);
+			}					
+		}		
 	}
 	
 	private void addNewSpriteWithCoords(CCPoint pos) {
@@ -259,13 +301,14 @@ public class CSampleMap extends ColorLayer{
      			AtlasSprite sprite = (AtlasSprite)userData;
      			sprite.setPosition(b.getPosition().x * PTM_RATIO, b.getPosition().y * PTM_RATIO);
      			sprite.setRotation(-1.0f * CCMacros.CC_RADIANS_TO_DEGREES(b.getAngle()));
+     			Log.i("tick",CCPoint.ccp(sprite.getPositionX(),sprite.getPositionY()).toString());
      		}	
      	}
      }
 	 
 	 public boolean ccTouchesEnded(MotionEvent event)
      {                
-         CCPoint convertedLocation = Director.sharedDirector().convertCoordinate(event.getX(), event.getY());
+	          CCPoint convertedLocation = Director.sharedDirector().convertCoordinate(event.getX(), event.getY());
          Log.i("move to",convertedLocation.toString());
          
          CocosNode s = baseScene.getChild(kTagSpriteManager);         
@@ -275,16 +318,14 @@ public class CSampleMap extends ColorLayer{
          
          for(int i = 0;i<s.getChildren().size();i++){
         	 CocosNode no = s.getChildren().get(i);
-        	 if(null != no){        		 
-                 Log.i("target point",CCPoint.ccp(no.getPositionX(),no.getPositionY()).toString());
-                 Log.i("target world poiont",no.convertToWorldSpace(no.getPositionX(), no.getPositionY()).toString());
+        	 if(null != no){     
                  
         		 s.getChildren().get(i).stopAllActions();
         		 s.getChildren().get(i).runAction(MoveTo.action(1.0f, spacePoint.x , spacePoint.y));
         	 }        		 
          }             
                   
-         
+         move(512-convertedLocation.x,400-convertedLocation.y);
          
          //float o = convertedLocation.x - s.getPositionX();
          //float a = convertedLocation.y - s.getPositionY();
@@ -297,7 +338,7 @@ public class CSampleMap extends ColorLayer{
          //}
          //s.runAction(RotateTo.action(1, at));
          
-         return TouchDispatcher.kEventHandled;
+         return true;
      }
 	 
 
@@ -307,4 +348,21 @@ public class CSampleMap extends ColorLayer{
 			Vec2 gravity = new Vec2( accelX * -2.00f, accelY * -2.00f );
 			bxWorld.setGravity( gravity );
 		}
+		
+		 public boolean onInterceptTouchEvent(MotionEvent ev) {	     
+	        int action = ev.getActionMasked();
+	        switch (action) {
+	        case MotionEvent.ACTION_DOWN:
+	            Log.i("TAG", "onInterceptTouchEvent.ACTION_DOWN");
+	            break;
+	        case MotionEvent.ACTION_MOVE:
+	            Log.i("TAG", "onInterceptTouchEvent.ACTION_MOVE");
+	            break;
+	        case MotionEvent.ACTION_CANCEL:
+	        case MotionEvent.ACTION_UP:
+	            Log.i("TAG", "onInterceptTouchEvent.ACTION_UP");
+	            break;
+	    }
+	        return true;
+	    }
 }

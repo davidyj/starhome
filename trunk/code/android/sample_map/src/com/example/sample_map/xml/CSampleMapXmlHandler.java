@@ -9,18 +9,20 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import android.R.string;
+import android.util.Log;
 
 import com.example.sample_map.map.CSampleMap;
+import com.example.sample_map.map.CSampleMapLayer;
 import com.example.sample_map.map.CSampleMapObj;
 import com.example.sample_map.map.CSampleMapTile;
 
 public class CSampleMapXmlHandler extends DefaultHandler {
 	
 	private CSampleMap map = null;
-	private String layertag = null;
+	private CSampleMapLayer layer = null;
 	private CSampleMapObj obj = null;
 	private CSampleMapTile tile = null;
-	private String layerindex = null;
+	private String layerindex = null,ts = null;
 	
 	public CSampleMap getMap(){
 		return map; 
@@ -33,7 +35,18 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		
 		}
 		else if("t".equals(localName)){
-			map.addTile(Integer.valueOf(layerindex), tile);
+			try {
+				map.addTile(Integer.valueOf(layerindex), tile);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else if("o".equals(localName)){			
 			try {
@@ -74,6 +87,16 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 			for(int i=0;i<attributes.getLength();i++){
 				tile.setValue(attributes.getLocalName(i), attributes.getValue(i));
 			}
+			tile.initTexture(ts);
+		}
+		else if("layerInfo".equals(localName)){
+			ts = null;
+			for(int i=0;i<attributes.getLength();i++){
+				layer.setValue(attributes.getLocalName(i), attributes.getValue(i));
+				if("tS".equals(attributes.getLocalName(i))){
+					ts = attributes.getValue(i);
+				}
+			}
 		}
 		else if("back".equals(localName)){
 			
@@ -86,6 +109,8 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("layer".equals(localName)){
 			layerindex = attributes.getValue("name");
+			Log.i("layer id",layerindex);
+			layer = map.getLayer(Integer.valueOf(layerindex));
 		}
 		else if("tile".equals(localName)){
 			
@@ -100,7 +125,9 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 			
 		}
 		else if("miniMap".equals(localName)){
-			
+			for(int i = 0;i<attributes.getLength();i++){
+				map.setValue(attributes.getLocalName(i), attributes.getValue(i));
+			}
 		}
 	}
 }

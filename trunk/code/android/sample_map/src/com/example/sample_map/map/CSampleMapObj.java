@@ -15,7 +15,7 @@ public class CSampleMapObj extends TextureNode{
 	}
 	
 	public String name = null;
-	public String os = null;
+	public String os = null,u=null,no=null,ts=null;
 	public String l0 = null,l1 = null,l2 = null,path = null,img = null;
 	public CCVertex3D position = new CCVertex3D(0.0f, 0.0f, 0.0f);
 	public CCVertex3D origin = new CCVertex3D(0.0f, 0.0f, 0.0f); 
@@ -46,7 +46,7 @@ public class CSampleMapObj extends TextureNode{
 			position.x = Float.valueOf(value);
 		}
 		else if("y".equals(key)){
-			position.y = -Float.valueOf(value);		
+			position.y = Float.valueOf(value);		
 		}
 		else if("z".equals(value)){
 			position.z = Float.valueOf(value);
@@ -61,13 +61,22 @@ public class CSampleMapObj extends TextureNode{
 			origin.x = Float.valueOf(value);
 		}
 		else if("origin_y".equals(key)){
-			origin.y = -Float.valueOf(value);
+			origin.y = Float.valueOf(value);
 		}
 		else if("origin_z".equals(key)){
 			origin.z = Float.valueOf(value);
 		}
 		else if("img".equals(key)){
 			img = value;
+		}
+		else if("no".equals(key)){
+			no = value;
+		}
+		else if("u".equals(key)){
+			u = value;
+		}
+		else if("ts".equals(key)){
+			ts = value;
 		}
 	}
 	public void setTexture(String filepath){
