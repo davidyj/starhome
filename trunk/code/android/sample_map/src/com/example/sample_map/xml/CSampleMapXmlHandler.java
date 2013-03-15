@@ -36,7 +36,7 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("t".equals(localName)){
 			try {
-				map.addTile(Integer.valueOf(layerindex), tile);
+				map.addTile(Integer.valueOf(layerindex),tile);
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -50,7 +50,7 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("o".equals(localName)){			
 			try {
-				map.addObj(obj);
+				map.addObj(Integer.valueOf(layerindex),obj);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			} catch (ParserConfigurationException e) {
@@ -91,8 +91,7 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("layerInfo".equals(localName)){
 			ts = null;
-			for(int i=0;i<attributes.getLength();i++){
-				layer.setValue(attributes.getLocalName(i), attributes.getValue(i));
+			for(int i=0;i<attributes.getLength();i++){				
 				if("tS".equals(attributes.getLocalName(i))){
 					ts = attributes.getValue(i);
 				}
@@ -109,7 +108,6 @@ public class CSampleMapXmlHandler extends DefaultHandler {
 		}
 		else if("layer".equals(localName)){
 			layerindex = attributes.getValue("name");
-			Log.i("layer id",layerindex);
 			layer = map.getLayer(Integer.valueOf(layerindex));
 		}
 		else if("tile".equals(localName)){

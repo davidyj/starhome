@@ -25,11 +25,5 @@ public class CSampleMapLayer {
 	
 	public ArrayList<CSampleMapTile> tiles(){
 		return tiles;
-	}
-	
-	public void setValue(String key,String value){
-		if("tS".equals(key)){
-			ts = value;
-		}
-	}
+	}	
 }
