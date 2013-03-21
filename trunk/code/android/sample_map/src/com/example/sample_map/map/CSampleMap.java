@@ -122,6 +122,7 @@ public class CSampleMap extends ColorLayer{
 	private HashMap<String,CSampleMapTile> tiles = new HashMap<String,CSampleMapTile>();
 	private CSampleMapObj currentObj = null;
 	private CSampleMapTile currentTile = null;
+	private CCPoint movePoint = CCPoint.ccp(0.0f, 0.0f);
 	private int map_top = 0,map_bottom = 0,map_left = 0,map_right = 0,map_width=0,map_height = 0,map_centerX = 0,map_centerY = 0;
 	
 	public CSampleMapLayer getLayer(int index){
@@ -236,7 +237,7 @@ public class CSampleMap extends ColorLayer{
 	}	
 	
 	public void move(float x ,float y){
-		this.setPosition(this.getPositionX() - x, this.getPositionY() + y);		
+		this.setPosition(this.getPositionX() + x, this.getPositionY() - y);		
 	}
 	
 	
@@ -323,63 +324,59 @@ public class CSampleMap extends ColorLayer{
      		}	
      	}
      }
-	 
-	 public boolean ccTouchesEnded(MotionEvent event)
-     {                
-	     CCPoint convertedLocation = Director.sharedDirector().convertCoordinate(event.getX(), event.getY());         
-         
-         CocosNode s = baseScene.getChild(kTagSpriteManager);         
-         
-         CCPoint spacePoint = s.convertToNodeSpace(convertedLocation.x, convertedLocation.y );
-                  
-         
-         for(int i = 0;i<s.getChildren().size();i++){
-        	 CocosNode no = s.getChildren().get(i);
-        	 if(null != no){     
-                 
-        		 s.getChildren().get(i).stopAllActions();
-        		 s.getChildren().get(i).runAction(MoveTo.action(1.0f, spacePoint.x , spacePoint.y));
-        	 }        		 
-         }             
-                  
-         move(512-convertedLocation.x,400-convertedLocation.y);
-         
-         //float o = convertedLocation.x - s.getPositionX();
-         //float a = convertedLocation.y - s.getPositionY();
-         //float at = CCMacros.CC_RADIANS_TO_DEGREES((float) Math.atan(o / a));
-         //if (a < 0) {
-         //    if (o < 0)
-         //        at = 180 + Math.abs(at);
-         //    else
-         //        at = 180 - Math.abs(at);
-         //}
-         //s.runAction(RotateTo.action(1, at));
-         
-         return true;
-     }
-	 
-
-		@Override
-	    public void ccAccelerometerChanged(float accelX, float accelY, float accelZ) {
-			// no filtering being done in this demo (just magnify the gravity a bit)
-			Vec2 gravity = new Vec2( accelX * -2.00f, accelY * -2.00f );
-			bxWorld.setGravity( gravity );
-		}
+	@Override
+    public void ccAccelerometerChanged(float accelX, float accelY, float accelZ) {
+		// no filtering being done in this demo (just magnify the gravity a bit)
+		Vec2 gravity = new Vec2( accelX * -2.00f, accelY * -2.00f );
+		bxWorld.setGravity( gravity );
+	}	
+	@Override
+	public boolean ccTouchesBegan(MotionEvent event){
+	   int action = event.getActionMasked();
+       switch (action) {
+       case MotionEvent.ACTION_DOWN:
+           Log.i("TAG", "ccTouchesBegan.ACTION_DOWN");
+           movePoint.x = movePoint.y = 0.0f;
+           break;
+       case MotionEvent.ACTION_MOVE:
+           Log.i("TAG", "ccTouchesBegan.ACTION_MOVE");
+           Log.i("position",CCPoint.ccp(event.getX(), event.getY()).toString());
+           break;
+       case MotionEvent.ACTION_CANCEL:
+       case MotionEvent.ACTION_UP:
+           Log.i("TAG", "ccTouchesBegan.ACTION_UP");
+           break;		           
+       }
+       return true;
+	}
+	
+	@Override
+	public boolean ccTouchesMoved(MotionEvent event){
+	   int action = event.getActionMasked();
+       switch (action) {
+       case MotionEvent.ACTION_DOWN:
+           Log.i("TAG", "ccTouchesMoved.ACTION_DOWN");
+           break;
+       case MotionEvent.ACTION_MOVE:
+           Log.i("TAG", "ccTouchesMoved.ACTION_MOVE");
+           Log.i("position",CCPoint.ccp(event.getX(), event.getY()).toString());
+           if(movePoint.x == 0.0f && movePoint.y == 0.0f){
+        	   movePoint.x = event.getX();
+        	   movePoint.y = event.getY();
+           }
+           else{	        	   
+        	   move(event.getX() - movePoint.x,event.getY() - movePoint.y);	        	   
+        	   movePoint.x = event.getX();
+        	   movePoint.y = event.getY();	        	   
+           }	           
+           break;
+       case MotionEvent.ACTION_CANCEL:
+       case MotionEvent.ACTION_UP:
+           Log.i("TAG", "ccTouchesMoved.ACTION_UP");
+           break;		           
+       }
+       return true;	
+	}
 		
-		 public boolean onInterceptTouchEvent(MotionEvent ev) {	     
-	        int action = ev.getActionMasked();
-	        switch (action) {
-	        case MotionEvent.ACTION_DOWN:
-	            Log.i("TAG", "onInterceptTouchEvent.ACTION_DOWN");
-	            break;
-	        case MotionEvent.ACTION_MOVE:
-	            Log.i("TAG", "onInterceptTouchEvent.ACTION_MOVE");
-	            break;
-	        case MotionEvent.ACTION_CANCEL:
-	        case MotionEvent.ACTION_UP:
-	            Log.i("TAG", "onInterceptTouchEvent.ACTION_UP");
-	            break;
-	    }
-	        return true;
-	    }
+		
 }

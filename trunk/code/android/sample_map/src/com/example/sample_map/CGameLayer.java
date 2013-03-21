@@ -23,7 +23,7 @@ public class CGameLayer extends ColorLayer {
 	public static Scene scene() throws SAXException, ParserConfigurationException, IOException
 	{
 		Scene scene = Scene.node();
-		CSampleMap map = CSampleMapXml.getInstance().read("xml/105040400.xml");
+		CSampleMap map = CSampleMapXml.getInstance().read("xml/000040000.xml");
 		
 		//map.setPosition(-2848.0f,-5.0f);
 		map.init();
