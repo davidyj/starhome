@@ -15,6 +15,9 @@ import android.util.Log;
 
 public class CCharacterPart extends TextureNode  {
 	
+	public static CCharacterPart create() {    	
+        return new CCharacterPart();
+    }	
 	public static CCharacterPart create(String path) {    	
         return new CCharacterPart(path);
     }	
@@ -25,6 +28,8 @@ public class CCharacterPart extends TextureNode  {
         return new CCharacterPart(part);
     }
 	
+    public CCharacterPart(){    	
+    }
     public CCharacterPart(String path) {
     	this.path = path;
 	}    
@@ -156,6 +161,7 @@ public class CCharacterPart extends TextureNode  {
         return getTexture() == (((CCharacterPart)frame).getTexture());
     }	
 	 public void setDisplayFrame(Object frame) {
+		 if(null != ((CCharacterPart)frame).getTexture())
 	        setTexture(((CCharacterPart)frame).getTexture());
 	 }
 	

@@ -32,6 +32,21 @@ public class CCharacterXML {
 			return instance;			
 	} 	
 	
+	public void readSuit(String filepath) throws SAXException, ParserConfigurationException, IOException
+	{
+	   // 构建SAXParser解析器
+		SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+	   // 实例化 DefaultHandler对象
+		CSuitXMLHandle parseXml = new CSuitXMLHandle();	   
+	   
+	   InputStream inputStream = Director.sharedDirector().getActivity().getAssets().open(filepath);
+	   // 调用parse()方法
+	   if (inputStream != null) {
+	    parser.parse(inputStream, parseXml);     
+	   }	   
+	   	
+	}
+	
 	public CCharecter readBody(String filepath) throws SAXException, ParserConfigurationException, IOException
 	{
 	   // 构建SAXParser解析器

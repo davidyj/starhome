@@ -19,46 +19,32 @@ import org.xml.sax.SAXException;
 import com.example.core.CCore;
 import com.example.nodes.CCharecter;
 import com.example.xml.CCharacterXML;
-import com.example.xml.CCharacterBodyXMLHandler;
 
 
 public class CGameLayer extends ColorLayer {
+	private CCSize winSize;
 	protected CGameLayer(CCColor4B color) throws SAXException, ParserConfigurationException, IOException {
 		super(color);
 		
 		// TODO Auto-generated constructor stub		
 		this.setIsTouchEnabled(true);		
 			
-		CCSize winSize = Director.sharedDirector().displaySize();
+		winSize = Director.sharedDirector().displaySize();
 		CCore.getInstance().GamePoint.x = 0;
 		CCore.getInstance().GamePoint.x = -winSize.height;
 		
-		//CCharecter player = CCharecter().create();
+		CCharacterXML.getInstance().readSuit("xml/suit.xml");
+		CCharacterXML.getInstance().readFace( "xml/Character/Face/00020000.xml");
 		
-		CCharacterXML.getInstance().readFace("xml/Character/Face/00020000.xml");
-		
+		//CCharecter player = CCharecter.create();		
 		CCharecter player = CCharacterXML.getInstance().readBody( "xml/Character/00002000.xml");
+		CCharacterXML.getInstance().readHead( player, "xml/Character/00012000.xml");
 		
-		CCharacterXML.getInstance().readHead(player, "xml/Character/00012000.xml");
-		
-		CCharacterXML.getInstance().readHair(player, "xml/Character/Hair/00030000.xml");
-		CCharacterXML.getInstance().readCap(player, "xml/Character/Cap/01000000.xml");
-		CCharacterXML.getInstance().readCape(player, "xml/Character/Cape/01102000.xml");
-		CCharacterXML.getInstance().readCoat(player, "xml/Character/Coat/01040000.xml");
-		CCharacterXML.getInstance().readGlove(player, "xml/Character/Glove/01080000.xml");
-		CCharacterXML.getInstance().readPant(player, "xml/Character/Pants/01060000.xml");
-		CCharacterXML.getInstance().readShield(player, "xml/Character/Shield/01092000.xml");
-		CCharacterXML.getInstance().readShoes(player, "xml/Character/Shoes/01070000.xml");
-		CCharacterXML.getInstance().readWeapon(player, "xml/Character/Weapon/01302000.xml");
-		
-		
-		player.init();	
-		
+		player.init();		
+		player.setSuit("11");			
 		player.setPosition( winSize.width / 2.0f, winSize.height / 2.0f);
 		
-		this.addChild(player.sprites);
-		
-		
+		this.addChild(player.sprites);		
 		
 		player.SetAction("alert");		
 		
@@ -101,8 +87,8 @@ public class CGameLayer extends ColorLayer {
 		  gl.glEnable(GL10.GL_LINE_SMOOTH);
 		  gl.glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
 		  gl.glLineWidth(0.5f);		     
-          Primitives.drawLine(gl, CCPoint.ccp(0,400), CCPoint.ccp(480, 400));
-          Primitives.drawLine(gl, CCPoint.ccp(240,0), CCPoint.ccp(240, 800));
+          Primitives.drawLine(gl, CCPoint.ccp(0,winSize.height/2), CCPoint.ccp(winSize.width, winSize.height/2));
+          Primitives.drawLine(gl, CCPoint.ccp(winSize.width/2,0), CCPoint.ccp(winSize.width/2, winSize.height));
 	 
 	 }
 	

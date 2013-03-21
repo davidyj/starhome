@@ -4,26 +4,18 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import android.util.Log;
-
-import com.example.actions.interval.CCharacterAnimate;
-import com.example.core.CCore;
-import com.example.nodes.CCharacterDefine;
 import com.example.nodes.CCharacterAnimation;
 import com.example.nodes.CCharacterFrame;
 import com.example.nodes.CCharacterPart;
-import com.example.nodes.CCharacterSprite;
 import com.example.nodes.CCharecter;
 
-//该类负责解析 xml 数据
+
 public class CCharacterBodyXMLHandler extends DefaultHandler{
 	
 		private CCharecter 			character  	= null;		
 		private CCharacterPart		parts		= null;
 		private CCharacterFrame 	frames		= null;
 		private CCharacterAnimation animation 	= null;
-		private CCharacterAnimate 	animate 	= null;
-		
 		private String stag = null;	
 				
 		

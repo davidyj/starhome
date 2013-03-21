@@ -26,9 +26,7 @@ public class CCharacterFaceXMLHandler extends DefaultHandler {
 	}
 
 	@Override
-	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {
-		Log.i("startElement",localName);
-		
+	public void startElement(String uri, String localName, String qName,Attributes attributes) throws SAXException {		
 		if("p".equals(localName)){
 			if("default".equals(attributes.getValue("name")))
 				return;				
